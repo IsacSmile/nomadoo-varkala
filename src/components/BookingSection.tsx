@@ -211,7 +211,7 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ selectedActivity
                     Daily Tour Schedule & Timings
                   </h3>
                 </div>
-                <span className="bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full">
+                <span className="whitespace-nowrap shrink-0 bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-[10px] font-black uppercase px-2.5 py-1 rounded-full">
                   Live Slots
                 </span>
               </div>
