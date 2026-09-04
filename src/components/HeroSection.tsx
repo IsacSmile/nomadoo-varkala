@@ -25,7 +25,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookClick }) => {
               {/* Main Image Container */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] sm:aspect-[16/11] group">
                 <img
-                  src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80"
+                  src="/images/yolo_kayak_relaxing.jpg"
                   alt="Guided Mangrove Kayaking in Varkala Backwaters"
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                 />

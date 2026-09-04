@@ -29,14 +29,16 @@ export const MAIN_KAYAKING_ACTIVITY = {
       name: "1-Seater Kayak (Single)",
       description: "Solo kayaking adventure. Best for independent paddlers wanting complete freedom.",
       tag: "Popular for Solo Travelers",
-      icon: "User"
+      icon: "User",
+      image: "/images/solo_green_kayak_mangrove.jpg"
     },
     {
       id: "kayak-2seater",
       name: "2-Seater Kayak (Tandem)",
       description: "Tandem double kayak. Perfect for couples, friends, or parent with a child.",
       tag: "Best for Couples & Friends",
-      icon: "Users"
+      icon: "Users",
+      image: "/images/tandem_kayak_blue_sky.jpg"
     }
   ],
   badgeIcons: [
@@ -57,7 +59,7 @@ export const OTHER_ACTIVITIES: Activity[] = [
     capacity: "Families & Groups",
     priceNote: "Best Price Guaranteed",
     description: "Enjoy traditional country boating in Varkala with a relaxing boat ride through scenic backwaters and mangroves. Explore the beauty of nature on our popular Varkala backwater tour.",
-    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80",
+    image: "/images/mangrove_roots_couple.jpg",
     highlightBadge: "Family Favorite",
     features: ["Shaded Traditional Wooden Boat", "Private Boat Crew", "Peaceful Mangrove Tunnels", "Perfect for Elders & Children"]
   },
@@ -70,7 +72,7 @@ export const OTHER_ACTIVITIES: Activity[] = [
     capacity: "Up to 6 Persons",
     priceNote: "Quick Adventure",
     description: "A quick, exciting, and relaxing way to explore the mangroves and wide backwater channels in Varkala with family or friends.",
-    image: "https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=800&q=80",
+    image: "/images/group_paddlers.jpg",
     highlightBadge: "Thrilling & Fast",
     features: ["Speed & Thrill Combo", "Covers Wide Waterway Channels", "Life Jackets Provided", "Instant Quick Tour"]
   },
@@ -83,7 +85,7 @@ export const OTHER_ACTIVITIES: Activity[] = [
     capacity: "1 Person per Board",
     priceNote: "Fitness & Fun",
     description: "Glide silently over calm waters while standing upright on a paddleboard. A magnificent workout and immersive nature experience for active enthusiasts.",
-    image: "https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=800&q=80",
+    image: "/images/sunset_floating.jpg",
     highlightBadge: "Unique Experience",
     features: ["Balance & Core Engagement", "Safety Briefing Included", "High Stability SUP Boards", "Photogenic Waterway Passages"]
   }
@@ -92,63 +94,57 @@ export const OTHER_ACTIVITIES: Activity[] = [
 export const GALLERY_IMAGES = [
   {
     id: 1,
-    url: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
-    title: "Serene Mangrove Canopy",
-    caption: "Paddling through natural mangrove archways in Varkala"
+    url: "/images/yolo_kayak_relaxing.jpg",
+    title: "Emerald Mangrove Waterways",
+    caption: "Paddling on vibrant YOLO kayaks surrounded by lush Varkala mangroves"
   },
   {
     id: 2,
-    url: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80",
-    title: "Golden Hour Sunrise Kayaking",
-    caption: "Early morning calm reflections on backwater canals"
+    url: "/images/sunset_floating.jpg",
+    title: "Golden Hour Sunset Floating",
+    caption: "Floating peacefully in lifejackets under golden Varkala evening skies"
   },
   {
     id: 3,
-    url: "https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=800&q=80",
-    title: "Tandem Kayak Exploring",
-    caption: "Double seater kayaking with friends & family"
+    url: "/images/group_paddlers.jpg",
+    title: "Group Kayaking Adventure",
+    caption: "Friends and families enjoying Varkala mangrove backwater trips together"
   },
   {
     id: 4,
-    url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-    title: "Sunset Kayak Tour",
-    caption: "Breathtaking sunset hues across Varkala backwaters"
+    url: "/images/mangrove_roots_couple.jpg",
+    title: "Natural Mangrove Roots",
+    caption: "Up-close exploration of tangled mangrove root ecosystems"
   },
   {
     id: 5,
-    url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
-    title: "Country Boat Trail",
-    caption: "Traditional wooden country boat cruising quietly"
+    url: "/images/mangrove_tunnel_canopy.jpg",
+    title: "Secret Mangrove Tunnel",
+    caption: "Gliding under dense green canopy tunnels untouched by motor noise"
   },
   {
     id: 6,
-    url: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80",
-    title: "Mangrove Roots & Fauna",
-    caption: "Up-close ecosystem exploration with certified guides"
+    url: "/images/tandem_kayak_blue_sky.jpg",
+    title: "Clear Sky Tandem Paddling",
+    caption: "Tandem 2-seater kayaking on open Paravoor backwaters"
   },
   {
     id: 7,
-    url: "https://images.unsplash.com/photo-1476514525535-ce74f45814d0?auto=format&fit=crop&w=800&q=80",
-    title: "Morning Mist Waters",
-    caption: "Pristine, calm waters perfect for beginner paddlers"
+    url: "/images/sunset_kayak_reflection.jpg",
+    title: "Sunset Kayaking Horizon",
+    caption: "Tranquil sunset hues reflecting across Paravoor lake channels"
   },
   {
     id: 8,
-    url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
-    title: "Tropical Green Horizon",
-    caption: "Coconut palms and mangrove vegetation surrounding Paravoor"
+    url: "/images/sunset_silhouette_paddle.jpg",
+    title: "Sunset Silhouette Moment",
+    caption: "Capturing unforgettable golden hour memories with raised paddles"
   },
   {
     id: 9,
-    url: "https://images.unsplash.com/photo-1528164344705-47542687990d?auto=format&fit=crop&w=800&q=80",
-    title: "Single Seater Freedom",
-    caption: "Enjoy your personal pace along winding mangrove passages"
-  },
-  {
-    id: 10,
-    url: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80",
-    title: "Safety & Smiles",
-    caption: "High quality buoyancy jackets and light paddles"
+    url: "/images/solo_green_kayak_mangrove.jpg",
+    title: "Solo Kayaker Sunbeams",
+    caption: "Morning light breaking through mangrove branches onto calm waters"
   }
 ];
 
@@ -164,35 +160,35 @@ export interface VideoItem {
 export const GALLERY_VIDEOS: VideoItem[] = [
   {
     id: "v1",
-    title: "Sunrise Mangrove Tunnel Ride",
+    title: "Secret Mangrove Tunnel Canopy",
     duration: "0:45",
-    poster: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+    poster: "/images/mangrove_tunnel_canopy.jpg",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-a-person-paddling-a-kayak-on-a-calm-lake-43093-large.mp4",
     description: "Watch how peaceful the early morning paddling feels through thick mangrove tunnels in Varkala."
   },
   {
     id: "v2",
-    title: "2-Seater Kayak Tour Highlights",
+    title: "Golden Hour Sunset Floating",
     duration: "0:58",
-    poster: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80",
+    poster: "/images/sunset_floating.jpg",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-person-in-a-kayak-41551-large.mp4",
-    description: "A glimpse of couples paddling seamlessly down the calm Paravoor backwater stream."
+    description: "A glimpse of paddlers floating peacefully under breathtaking golden Varkala evening skies."
   },
   {
     id: "v3",
-    title: "Sunset Country Boating Varkala",
+    title: "Group Backwater Kayak Tour",
     duration: "0:35",
-    poster: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80",
+    poster: "/images/group_paddlers.jpg",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-boating-in-a-lake-at-sunset-42998-large.mp4",
-    description: "Relaxing golden hour family trip on a traditional wooden country boat."
+    description: "Relaxing group family & friends trip through quiet Paravoor backwater streams."
   },
   {
     id: "v4",
-    title: "Semi-Speed Boat Thrill Pass",
+    title: "Tandem Kayak Open Lake Glide",
     duration: "0:42",
-    poster: "https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=600&q=80",
+    poster: "/images/yolo_kayak_relaxing.jpg",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-speedboat-cruising-on-a-river-42997-large.mp4",
-    description: "Feel the refreshing breeze along the open lake channels near Varkala."
+    description: "Feel the refreshing breeze along open lake channels near Varkala."
   }
 ];
 

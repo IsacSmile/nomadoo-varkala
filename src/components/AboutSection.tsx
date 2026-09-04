@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Users, Sun, HeartHandshake, Compass, MapPin, Sparkles, Navigation } from 'lucide-react';
+import { ShieldCheck, Users, Sun, HeartHandshake, Compass, MapPin, Sparkles, Navigation, Camera } from 'lucide-react';
 import { WHY_US_FEATURES } from '../data/nomadooData';
 
 export const AboutSection: React.FC = () => {
@@ -20,7 +20,7 @@ export const AboutSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-16">
           
           {/* Left Column: Story & Paragraph */}
           <motion.div
@@ -44,7 +44,7 @@ export const AboutSection: React.FC = () => {
             </p>
 
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Located ~30 minutes from Varkala Cliff in Paravoor, our secluded waterways remain untouched by commercial boat noise. Glide through calm mangrove archways where kingfishers, egrets, and pristine backwater reflections create magic.
+              Located ~30 minutes from Varkala Cliff in Paravoor, our secluded waterways remain untouched by commercial boat noise. Glide through calm mangrove archways where kingfishers, eagles, egrets, and pristine backwater reflections create magic.
             </p>
 
             {/* Bullet Highlights Grid */}
@@ -126,6 +126,47 @@ export const AboutSection: React.FC = () => {
             ))}
           </motion.div>
 
+        </div>
+
+        {/* Real Mangrove Nature & Wildlife Photography Spotlight Strip */}
+        <div className="pt-8 border-t border-sand-200/80">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <div className="flex items-center gap-1.5 text-xs font-bold text-mangrove-800 uppercase tracking-widest">
+                <Camera className="w-4 h-4 text-sunset-500" />
+                <span>Authentic Ecosystem Photography</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">
+                Real Wildlife Spotted on Our Kayak Tours
+              </h3>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="relative h-60 rounded-3xl overflow-hidden shadow-lg border border-sand-200 group">
+              <img src="/images/brahminy_kite_eagle.jpg" alt="Brahminy Kite Eagle in Varkala Mangroves" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent p-4 flex flex-col justify-end">
+                <span className="text-white font-extrabold text-xs">Brahminy Sea Eagle</span>
+                <span className="text-sand-300 text-[11px]">Frequently spotted perched on mangrove branches</span>
+              </div>
+            </div>
+
+            <div className="relative h-60 rounded-3xl overflow-hidden shadow-lg border border-sand-200 group">
+              <img src="/images/mangrove_heron_bird.jpg" alt="Western Reef Heron in Mangrove Shoots" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent p-4 flex flex-col justify-end">
+                <span className="text-white font-extrabold text-xs">Western Reef Heron</span>
+                <span className="text-sand-300 text-[11px]">Foraging peacefully around pneumatic mangrove root shoots</span>
+              </div>
+            </div>
+
+            <div className="relative h-60 rounded-3xl overflow-hidden shadow-lg border border-sand-200 group">
+              <img src="/images/openbill_stork_nature.jpg" alt="Asian Openbill Stork in Varkala Backwaters" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent p-4 flex flex-col justify-end">
+                <span className="text-white font-extrabold text-xs">Asian Openbill Stork</span>
+                <span className="text-sand-300 text-[11px]">Feeding on snails in shallow backwater beds</span>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
