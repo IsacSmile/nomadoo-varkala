@@ -11,18 +11,15 @@ export const FloatingWhatsapp: React.FC = () => {
         Book on WhatsApp 💬
       </span>
 
-      {/* Floating Button with Pulse Outer Ring */}
+      {/* Floating Button - Clean FontAwesome WhatsApp Icon */}
       <a
         href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Nomadoo%20Varkala!%20I%20want%20to%20inquire%20about%20Mangrove%20Kayaking%20and%20boating%20tours.`}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative w-14 h-14 rounded-full flex items-center justify-center transition-transform transform group-hover:scale-110 active:scale-95 shadow-2xl"
+        className="relative w-14 h-14 flex items-center justify-center transition-transform transform group-hover:scale-110 active:scale-95 drop-shadow-2xl"
         aria-label="Chat on WhatsApp"
       >
-        {/* Pulsing Ring */}
-        <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-75 animate-ping -z-10" />
-
-        <WhatsappIcon className="w-14 h-14 drop-shadow-xl" showBackground={true} />
+        <WhatsappIcon className="w-14 h-14 drop-shadow-lg" />
       </a>
 
     </div>
