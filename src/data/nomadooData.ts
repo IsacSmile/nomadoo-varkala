@@ -70,7 +70,7 @@ export const OTHER_ACTIVITIES: Activity[] = [
     capacity: "Up to 6 Persons",
     priceNote: "Quick Adventure",
     description: "A quick, exciting, and relaxing way to explore the mangroves and wide backwater channels in Varkala with family or friends.",
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=800&q=80",
     highlightBadge: "Thrilling & Fast",
     features: ["Speed & Thrill Combo", "Covers Wide Waterway Channels", "Life Jackets Provided", "Instant Quick Tour"]
   },
