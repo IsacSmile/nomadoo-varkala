@@ -62,7 +62,7 @@ export const OTHER_ACTIVITIES: Activity[] = [
     capacity: "Families & Groups",
     priceNote: "Best Price Guaranteed",
     description: "Enjoy traditional country boating in Varkala with a relaxing boat ride through scenic backwaters and mangroves. Explore the beauty of nature on our popular Varkala backwater tour.",
-    image: "/images/mangrove_roots_couple.jpg",
+    image: "/images/country_boat_mangrove_entrance.jpg",
     highlightBadge: "Family Favorite",
     features: ["Shaded Traditional Wooden Boat", "Private Boat Crew", "Peaceful Mangrove Tunnels", "Perfect for Elders & Children"]
   },

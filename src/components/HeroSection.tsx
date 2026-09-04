@@ -98,9 +98,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookClick }) => {
                   href={GOOGLE_MAPS_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute top-3.5 left-3.5 bg-slate-950/85 hover:bg-mangrove-900 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider border border-white/20 shadow-md transition-colors flex items-center gap-1 z-10"
+                  className="absolute top-3.5 left-3.5 max-w-[calc(100%-140px)] sm:max-w-xs bg-slate-950/85 hover:bg-mangrove-900 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider border border-white/20 shadow-md transition-colors flex items-center gap-1 z-10 shrink min-w-0"
                 >
-                  <span>📍 {HERO_PHOTOS[currentSlide].location}</span>
+                  <span className="truncate">📍 {HERO_PHOTOS[currentSlide].location}</span>
                 </a>
 
                 {/* Manual Navigation Controls & Slide Dots */}

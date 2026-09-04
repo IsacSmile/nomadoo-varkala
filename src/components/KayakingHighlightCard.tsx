@@ -29,8 +29,8 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
         <div className="bg-gradient-to-br from-sand-50 via-white to-sand-100 rounded-3xl p-6 sm:p-8 lg:p-10 border-2 border-mangrove-200/80 shadow-2xl relative overflow-hidden">
           
           {/* Top Decorative Tag */}
-          <div className="absolute top-0 right-0 bg-gradient-to-l from-mangrove-800 to-mangrove-700 text-white px-6 py-2 rounded-bl-2xl text-xs sm:text-sm font-bold shadow-md flex items-center gap-2">
-            <Compass className="w-4 h-4 text-sunset-500 animate-spin-slow" />
+          <div className="absolute top-0 right-0 bg-gradient-to-l from-mangrove-900 via-mangrove-800 to-mangrove-700 text-white px-3.5 py-1.5 sm:px-5 sm:py-2 rounded-bl-2xl rounded-tr-3xl text-[11px] sm:text-xs font-black shadow-md flex items-center gap-1.5 z-10">
+            <Compass className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-sunset-400" />
             <span>Most Popular Choice</span>
           </div>
 
@@ -40,7 +40,7 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
             <div className="lg:col-span-6 space-y-6">
               <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[16/10] group">
                 <img
-                  src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1000&q=80"
+                  src="/images/kayakers_canopy_tunnel.jpg"
                   alt="Varkala Mangrove Kayaking"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
