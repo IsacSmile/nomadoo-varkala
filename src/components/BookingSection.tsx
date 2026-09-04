@@ -100,9 +100,9 @@ export const BookingSection: React.FC = () => {
   ];
 
   const timeSlotsList = [
-    { label: 'Sunrise Hour (6:00 AM - 9:00 AM)', val: 'Sunrise Hour (6:00 AM - 9:00 AM)' },
-    { label: 'Daytime / Midday (9:00 AM - 3:00 PM)', val: 'Daytime / Midday (9:00 AM - 3:00 PM)' },
-    { label: 'Sunset Hour (4:00 PM - 6:30 PM)', val: 'Sunset Hour (4:00 PM - 6:30 PM)' }
+    { label: '🌅 Morning Golden Sunrise (Starts 6:00 AM - 9:00 AM)', val: 'Morning Sunrise Batch (Starts 6:00 AM)' },
+    { label: '🌇 Evening Golden Sunset (Starts 4:00 PM - 6:30 PM)', val: 'Evening Sunset Batch (Starts 4:00 PM)' },
+    { label: '☀️ Midday Daytime (9:00 AM - 3:00 PM)', val: 'Midday Daytime Batch (9:00 AM - 3:00 PM)' }
   ];
 
   const guestOptions = ['1', '2', '3', '4', '5', '6', '7', '8', '10', '12+'];
@@ -150,8 +150,72 @@ export const BookingSection: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           
-          {/* Left Column: Trust Summary & Instructions */}
+          {/* Left Column: Tour Timings & Trust Summary */}
           <div className="lg:col-span-5 space-y-6">
+
+            {/* Daily Tour Timings Precise Schedule Card */}
+            <div className="bg-gradient-to-br from-slate-950 via-mangrove-950 to-slate-900 text-white rounded-3xl p-6 sm:p-7 border-2 border-mangrove-700/60 shadow-2xl space-y-4 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-36 h-36 bg-sunset-500/20 rounded-full blur-2xl pointer-events-none" />
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-xl bg-sunset-500/20 text-sunset-400 flex items-center justify-center font-bold">
+                    <Clock className="w-4 h-4" />
+                  </div>
+                  <h3 className="text-sm font-extrabold text-white uppercase tracking-wider">
+                    Daily Tour Schedule & Timings
+                  </h3>
+                </div>
+                <span className="bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full">
+                  Live Slots
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                
+                {/* Morning Slot Box */}
+                <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 hover:border-sunset-400/50 transition-all space-y-1">
+                  <div className="flex items-center justify-between text-sunset-300">
+                    <span className="text-xs font-black uppercase tracking-wider flex items-center gap-1">
+                      🌅 Morning Batch
+                    </span>
+                    <span className="text-[10px] font-extrabold bg-sunset-500/30 px-2 py-0.5 rounded-md text-sunset-200">
+                      Starts 6:00 AM
+                    </span>
+                  </div>
+                  <p className="text-base sm:text-lg font-black text-white">
+                    6:00 AM – 9:00 AM
+                  </p>
+                  <p className="text-[11px] text-slate-300 font-medium leading-snug">
+                    Calm glassy waters, cool morning breeze & birdwatching.
+                  </p>
+                </div>
+
+                {/* Evening Slot Box */}
+                <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 hover:border-sunset-400/50 transition-all space-y-1">
+                  <div className="flex items-center justify-between text-sunset-300">
+                    <span className="text-xs font-black uppercase tracking-wider flex items-center gap-1">
+                      🌇 Evening Batch
+                    </span>
+                    <span className="text-[10px] font-extrabold bg-sunset-500/30 px-2 py-0.5 rounded-md text-sunset-200">
+                      Starts 4:00 PM
+                    </span>
+                  </div>
+                  <p className="text-base sm:text-lg font-black text-white">
+                    4:00 PM – 6:30 PM
+                  </p>
+                  <p className="text-[11px] text-slate-300 font-medium leading-snug">
+                    Golden hour glow & magical mangrove sunset reflections.
+                  </p>
+                </div>
+
+              </div>
+
+              <p className="text-[11px] text-slate-400 font-medium text-center pt-1 flex items-center justify-center gap-1">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <span>Midday slots (9:00 AM – 3:00 PM) available on custom request.</span>
+              </p>
+            </div>
             
             <div className="bg-sand-100/90 rounded-3xl p-6 sm:p-8 border border-sand-200 shadow-sm space-y-6">
               <h3 className="text-lg sm:text-xl font-bold text-slate-900">

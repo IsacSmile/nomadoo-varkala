@@ -83,9 +83,37 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
                 <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
                   {MAIN_KAYAKING_ACTIVITY.title}
                 </h3>
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium bg-sand-100/70 p-4 rounded-2xl border border-sand-200">
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium bg-sand-100/70 p-4 rounded-2xl border border-sand-200 mb-4">
                   “{MAIN_KAYAKING_ACTIVITY.description}”
                 </p>
+
+                {/* Daily Prime Tour Batches Highlight Bar */}
+                <div className="bg-gradient-to-r from-slate-950 via-mangrove-950 to-slate-900 text-white rounded-2xl p-4 border border-mangrove-700/50 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-xl bg-sunset-500/20 text-sunset-400 flex items-center justify-center font-bold shrink-0">
+                      <Clock className="w-5 h-5 text-sunset-400" />
+                    </div>
+                    <div>
+                      <h5 className="text-xs font-black uppercase tracking-wider text-sunset-300">
+                        Daily Tour Timings & Batches
+                      </h5>
+                      <p className="text-[11px] text-slate-300 font-medium">
+                        Morning (6:00 AM) & Evening (4:00 PM) prime slots
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 w-full sm:w-auto">
+                    <div className="flex-1 sm:flex-initial bg-white/10 px-3.5 py-1.5 rounded-xl border border-white/15 text-center">
+                      <span className="text-[9px] text-slate-300 uppercase font-bold block">Morning Batch</span>
+                      <span className="text-xs font-black text-white">🌅 Starts 6:00 AM</span>
+                    </div>
+                    <div className="flex-1 sm:flex-initial bg-white/10 px-3.5 py-1.5 rounded-xl border border-white/15 text-center">
+                      <span className="text-[9px] text-slate-300 uppercase font-bold block">Evening Batch</span>
+                      <span className="text-xs font-black text-white">🌇 Starts 4:00 PM</span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Seater Options Grid */}
@@ -113,15 +141,24 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
                         </span>
                       </div>
 
-                      <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-mangrove-100 text-mangrove-800 flex items-center justify-center font-bold shrink-0">
-                          <User className="w-4 h-4" />
+                      <div className="flex items-center justify-between gap-1 flex-wrap">
+                        <div className="flex items-center gap-2">
+                          <div className="w-7 h-7 rounded-lg bg-mangrove-100 text-mangrove-800 flex items-center justify-center font-bold shrink-0">
+                            <User className="w-4 h-4" />
+                          </div>
+                          <h4 className="text-base font-extrabold text-slate-900">1-Seater Kayak</h4>
                         </div>
-                        <h4 className="text-base font-extrabold text-slate-900">1-Seater Kayak</h4>
+                        <span className="text-sm font-black text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-200">
+                          ₹600 / person
+                        </span>
                       </div>
 
                       {/* Bullet Details */}
                       <ul className="space-y-1.5 text-xs text-slate-600 font-medium pt-1">
+                        <li className="flex items-center gap-1.5 font-bold text-slate-900">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <span>Price: ₹600 per person</span>
+                        </li>
                         <li className="flex items-center gap-1.5">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                           <span>1 Person solo paddler capacity</span>
@@ -130,10 +167,6 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                           <span>Maximum agility in narrow mangrove tunnels</span>
                         </li>
-                        <li className="flex items-center gap-1.5">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                          <span>Ideal for solo explorers & active paddlers</span>
-                        </li>
                       </ul>
                     </div>
 
@@ -141,7 +174,7 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
                       onClick={() => onSelectOption('kayak-1seater')}
                       className="mt-4 w-full bg-mangrove-900 hover:bg-mangrove-950 text-white text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-1.5 transition-colors shadow-sm"
                     >
-                      <span>Select 1-Seater & Book</span>
+                      <span>Book 1-Seater (₹600)</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </button>
                   </div>
@@ -162,26 +195,31 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
                         </span>
                       </div>
 
-                      <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-mangrove-100 text-mangrove-800 flex items-center justify-center font-bold shrink-0">
-                          <Users className="w-4 h-4" />
+                      <div className="flex items-center justify-between gap-1 flex-wrap">
+                        <div className="flex items-center gap-2">
+                          <div className="w-7 h-7 rounded-lg bg-mangrove-100 text-mangrove-800 flex items-center justify-center font-bold shrink-0">
+                            <Users className="w-4 h-4" />
+                          </div>
+                          <h4 className="text-base font-extrabold text-slate-900">2-Seater Kayak</h4>
                         </div>
-                        <h4 className="text-base font-extrabold text-slate-900">2-Seater Kayak</h4>
+                        <span className="text-sm font-black text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-200">
+                          ₹1,200 / kayak
+                        </span>
                       </div>
 
                       {/* Bullet Details */}
                       <ul className="space-y-1.5 text-xs text-slate-600 font-medium pt-1">
+                        <li className="flex items-center gap-1.5 font-bold text-slate-900">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <span>Price: ₹1,200 per kayak (₹600 each)</span>
+                        </li>
                         <li className="flex items-center gap-1.5">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                           <span>2 Persons double paddler capacity</span>
                         </li>
                         <li className="flex items-center gap-1.5">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                          <span>Shared paddling effort (Relaxing & easy)</span>
-                        </li>
-                        <li className="flex items-center gap-1.5">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                          <span>Ideal for couples, friends & parent + child</span>
+                          <span>Shared paddling effort (Easy & smooth)</span>
                         </li>
                       </ul>
                     </div>
@@ -190,7 +228,7 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
                       onClick={() => onSelectOption('kayak-2seater')}
                       className="mt-4 w-full bg-mangrove-900 hover:bg-mangrove-950 text-white text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-1.5 transition-colors shadow-sm"
                     >
-                      <span>Select 2-Seater & Book</span>
+                      <span>Book 2-Seater (₹1,200)</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </button>
                   </div>
