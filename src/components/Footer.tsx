@@ -70,9 +70,22 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerms, onOpenPrivacy }) =>
 
         </div>
 
-        {/* Minimal Bottom Bar with Terms & Privacy Modal Buttons */}
+        {/* Minimal Bottom Bar with Terms & Privacy Modal Buttons + Attribution */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 pr-16 sm:pr-20">
-          <p>© {new Date().getFullYear()} Nomadoo Varkala. Premium Kayaking & Boating Experiences.</p>
+          <div className="space-y-1 text-center sm:text-left">
+            <p>© {new Date().getFullYear()} Nomadoo Varkala. Premium Kayaking & Boating Experiences.</p>
+            <p className="text-[11px] text-slate-500 font-medium">
+              Engineered by{' '}
+              <a
+                href="https://www.instagram.com/faiz_imam__/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-mangrove-400 hover:text-white font-bold transition-colors underline decoration-mangrove-500/40 hover:decoration-white"
+              >
+                Faiz.I
+              </a>
+            </p>
+          </div>
           
           <div className="flex flex-wrap items-center gap-3.5 text-xs">
             <button
