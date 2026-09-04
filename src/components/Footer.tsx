@@ -1,9 +1,14 @@
 import React from 'react';
 import { CONTACT_PHONE_1, WHATSAPP_NUMBER, GOOGLE_MAPS_LINK } from '../data/nomadooData';
-import { Phone, MapPin, ArrowUp } from 'lucide-react';
+import { Phone, MapPin, ArrowUp, ShieldCheck, FileText } from 'lucide-react';
 import { WhatsappIcon } from './WhatsappIcon';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenTerms?: () => void;
+  onOpenPrivacy?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenTerms, onOpenPrivacy }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -35,7 +40,7 @@ export const Footer: React.FC = () => {
           </a>
 
           {/* Clean Quick Nav Links */}
-          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-300">
+          <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-300">
             <a href="#home" className="hover:text-mangrove-400 transition-colors">Home</a>
             <a href="#kayaking-highlight" className="hover:text-mangrove-400 transition-colors">Kayaking</a>
             <a href="#activities" className="hover:text-mangrove-400 transition-colors">Boating</a>
@@ -77,17 +82,37 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        {/* Minimal Bottom Bar */}
+        {/* Minimal Bottom Bar with Terms & Privacy Modal Buttons */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>© {new Date().getFullYear()} Nomadoo Varkala. Premium Kayaking & Boating Experiences.</p>
           
-          <button
-            onClick={scrollToTop}
-            className="w-8 h-8 rounded-full bg-slate-900 hover:bg-mangrove-800 text-slate-300 hover:text-white flex items-center justify-center transition-all border border-slate-800 shadow-sm"
-            aria-label="Back to Top"
-          >
-            <ArrowUp className="w-3.5 h-3.5" />
-          </button>
+          <div className="flex items-center gap-4 text-xs">
+            <button
+              onClick={onOpenTerms}
+              className="hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
+            >
+              <FileText className="w-3.5 h-3.5 text-mangrove-400" />
+              <span>Terms & Cancellation Policy</span>
+            </button>
+
+            <span className="text-slate-800">•</span>
+
+            <button
+              onClick={onOpenPrivacy}
+              className="hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Privacy Policy</span>
+            </button>
+
+            <button
+              onClick={scrollToTop}
+              className="w-8 h-8 rounded-full bg-slate-900 hover:bg-mangrove-800 text-slate-300 hover:text-white flex items-center justify-center transition-all border border-slate-800 shadow-sm ml-2"
+              aria-label="Back to Top"
+            >
+              <ArrowUp className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
 
       </div>

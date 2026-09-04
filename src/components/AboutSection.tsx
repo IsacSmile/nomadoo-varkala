@@ -36,15 +36,19 @@ export const AboutSection: React.FC = () => {
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Connecting You to Kerala’s <span className="text-transparent bg-clip-text bg-gradient-to-r from-mangrove-800 via-emerald-700 to-sunset-500">Secret Mangrove Waterways</span>
+              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-mangrove-800 via-emerald-700 to-sunset-500">Nomadoo Varkala</span>
             </h2>
 
             <p className="text-xs sm:text-base text-slate-700 leading-relaxed font-medium">
-              Nomadoo is Varkala’s premier guided backwater experience partner. We partner directly with certified local safety guides to ensure every kayaking and boating trip is safe, serene, and unforgettable.
+              Nomadoo is a booking partner specializing in Mangrove Kayaking and Boating experiences in Varkala. We connect travelers with trusted local operators to explore the calm and scenic mangrove forests, discover hidden waterways, and experience nature up close.
             </p>
 
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Located ~30 minutes from Varkala Cliff in Paravoor, our secluded waterways remain untouched by commercial boat noise. Glide through calm mangrove archways where kingfishers, eagles, egrets, and pristine backwater reflections create magic.
+            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-semibold bg-sand-100/80 p-4 rounded-2xl border border-sand-200">
+              Nomadoo was founded by <strong className="text-mangrove-900">PARSH</strong> a passionate kayaker and <strong className="text-mangrove-900">SONA</strong>, an adventure and nature enthusiast. Together, we aim to create safe, peaceful, and memorable mangrove experiences for beginners, families, and nature lovers alike.
+            </p>
+
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+              At Nomadoo, every journey through the mangroves is more than just an activity — it’s a moment to connect with nature and unwind from the rush of daily life.
             </p>
 
             {/* Bullet Highlights Grid */}

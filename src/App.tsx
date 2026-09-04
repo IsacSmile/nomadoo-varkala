@@ -10,9 +10,11 @@ import { AboutSection } from './components/AboutSection';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsapp } from './components/FloatingWhatsapp';
+import { PolicyModal } from './components/PolicyModal';
 
 export const App: React.FC = () => {
   const [selectedActivityId, setSelectedActivityId] = useState<string | undefined>(undefined);
+  const [policyModal, setPolicyModal] = useState<'terms' | 'privacy' | null>(null);
 
   const scrollToBooking = (activityId?: string) => {
     if (activityId) {
@@ -64,10 +66,19 @@ export const App: React.FC = () => {
       <FaqSection />
 
       {/* Footer */}
-      <Footer />
+      <Footer 
+        onOpenTerms={() => setPolicyModal('terms')} 
+        onOpenPrivacy={() => setPolicyModal('privacy')} 
+      />
 
       {/* Floating WhatsApp Action Button */}
       <FloatingWhatsapp />
+
+      {/* Terms & Privacy Policy Minimal Modal */}
+      <PolicyModal 
+        type={policyModal} 
+        onClose={() => setPolicyModal(null)} 
+      />
 
     </div>
   );

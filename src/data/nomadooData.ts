@@ -199,37 +199,37 @@ export const FAQS = [
   {
     id: 1,
     question: "What is Nomadoo?",
-    answer: "Nomadoo is a trusted booking partner specializing in Mangrove Kayaking and Boating experiences in Varkala. We connect travelers with trusted local operators to explore serene mangrove forests, discover hidden waterways, and enjoy nature up close in a safe and guided environment."
+    answer: "Nomadoo is a booking partner specializing in Mangrove Kayaking and Boating experiences in Varkala. We connect travelers with trusted local operators to explore the serene mangrove forests, discover hidden waterways, and enjoy nature up close in a safe and guided environment."
   },
   {
     id: 2,
     question: "How can I book?",
-    answer: "You can book in under 30 seconds right on this page! Simply fill in your details or call/WhatsApp us directly at +91 9446110362 or +91 7057829795 for instant confirmation and current best rates."
+    answer: "FOR BOOKINGS & INQUIRIES, CALL or WHATSAPP: 📞 +91 9446110362 | 📞 +91 7057829795"
   },
   {
     id: 3,
     question: "What’s included in the activities?",
-    answer: "All bookings include experienced local guides, high-grade safety gear (buoyancy life jackets & paddles), safety briefing, and local ecological insights. All activities are 100% beginner-friendly!"
+    answer: "All bookings include experienced guides, safety gear, and local insights. Activities are beginner-friendly."
   },
   {
     id: 4,
     question: "Do I need to pay in advance?",
-    answer: "Yes, a nominal token amount confirms your booking slot. The remaining balance can be paid on-site upon arrival."
+    answer: "Yes, Token amount confirms your booking."
   },
   {
     id: 5,
     question: "What if I cancel?",
-    answer: "If you cancel the booking, the token amount is non-refundable. However, if a cancellation occurs from our side or due to unsafe weather conditions, a full 100% refund is immediately provided."
+    answer: "In case you cancel the booking, the token amount will not be refunded. However, if the cancellation happens from our side or due to weather conditions, a full refund provided."
   },
   {
     id: 6,
     question: "What should I carry?",
-    answer: "We recommend comfortable quick-dry clothes, sunscreen, a water bottle, a sun hat/cap, and a waterproof phone pouch or dry bag. We will guide you based on your specific activity."
+    answer: "Comfortable clothes, sunscreen, water bottle, and a cap. We’ll guide you based on the activity."
   },
   {
     id: 7,
     question: "Do you offer group or custom bookings?",
-    answer: "Yes! We welcome solo travelers, couples, families, and large corporate or student groups. Customized timing, private boats, and photography packages can easily be arranged via WhatsApp."
+    answer: "Yes! We welcome solo travelers, couples, and groups. Customized experiences can be arranged."
   }
 ];
 
