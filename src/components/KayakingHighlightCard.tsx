@@ -98,24 +98,48 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   
                   {/* 1-Seater Kayak Card */}
-                  <div className="bg-white p-5 rounded-2xl border-2 border-mangrove-200 hover:border-mangrove-600 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <div className="w-9 h-9 rounded-xl bg-mangrove-100 text-mangrove-800 flex items-center justify-center font-bold">
-                          <User className="w-5 h-5" />
-                        </div>
-                        <span className="text-[10px] font-extrabold uppercase bg-sunset-100 text-sunset-800 px-2 py-0.5 rounded-md">
-                          Single
+                  <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-mangrove-200 hover:border-mangrove-600 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group overflow-hidden">
+                    <div className="space-y-3">
+                      {/* Photo Banner */}
+                      <div className="relative h-28 sm:h-32 rounded-xl overflow-hidden shadow-inner">
+                        <img
+                          src="/images/solo_green_kayak_mangrove.jpg"
+                          alt="1-Seater Solo Kayak Varkala"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+                        <span className="absolute top-2.5 right-2.5 text-[10px] font-extrabold uppercase bg-sunset-500 text-white px-2 py-0.5 rounded-md shadow-sm">
+                          Single Kayak
                         </span>
                       </div>
-                      <h4 className="text-base font-bold text-slate-900">1-Seater Kayak</h4>
-                      <p className="text-xs text-slate-600">
-                        Designed for single paddler. Maximum agility & freedom to navigate narrow channels.
-                      </p>
+
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-lg bg-mangrove-100 text-mangrove-800 flex items-center justify-center font-bold shrink-0">
+                          <User className="w-4 h-4" />
+                        </div>
+                        <h4 className="text-base font-extrabold text-slate-900">1-Seater Kayak</h4>
+                      </div>
+
+                      {/* Bullet Details */}
+                      <ul className="space-y-1.5 text-xs text-slate-600 font-medium pt-1">
+                        <li className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <span>1 Person solo paddler capacity</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <span>Maximum agility in narrow mangrove tunnels</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <span>Ideal for solo explorers & active paddlers</span>
+                        </li>
+                      </ul>
                     </div>
+
                     <button
                       onClick={() => onSelectOption('kayak-1seater')}
-                      className="mt-4 w-full bg-mangrove-700 hover:bg-mangrove-800 text-white text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                      className="mt-4 w-full bg-mangrove-900 hover:bg-mangrove-950 text-white text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-1.5 transition-colors shadow-sm"
                     >
                       <span>Select 1-Seater & Book</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -123,24 +147,48 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
                   </div>
 
                   {/* 2-Seater Kayak Card */}
-                  <div className="bg-white p-5 rounded-2xl border-2 border-mangrove-200 hover:border-mangrove-600 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <div className="w-9 h-9 rounded-xl bg-mangrove-100 text-mangrove-800 flex items-center justify-center font-bold">
-                          <Users className="w-5 h-5" />
-                        </div>
-                        <span className="text-[10px] font-extrabold uppercase bg-mangrove-100 text-mangrove-900 px-2 py-0.5 rounded-md">
+                  <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-mangrove-200 hover:border-mangrove-600 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group overflow-hidden">
+                    <div className="space-y-3">
+                      {/* Photo Banner */}
+                      <div className="relative h-28 sm:h-32 rounded-xl overflow-hidden shadow-inner">
+                        <img
+                          src="/images/tandem_kayak_blue_sky.jpg"
+                          alt="2-Seater Tandem Kayak Varkala"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+                        <span className="absolute top-2.5 right-2.5 text-[10px] font-extrabold uppercase bg-mangrove-800 text-white px-2 py-0.5 rounded-md shadow-sm">
                           Double / Tandem
                         </span>
                       </div>
-                      <h4 className="text-base font-bold text-slate-900">2-Seater Kayak</h4>
-                      <p className="text-xs text-slate-600">
-                        Share the paddling effort together. Perfect for couples, friends, or parent & kid.
-                      </p>
+
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-lg bg-mangrove-100 text-mangrove-800 flex items-center justify-center font-bold shrink-0">
+                          <Users className="w-4 h-4" />
+                        </div>
+                        <h4 className="text-base font-extrabold text-slate-900">2-Seater Kayak</h4>
+                      </div>
+
+                      {/* Bullet Details */}
+                      <ul className="space-y-1.5 text-xs text-slate-600 font-medium pt-1">
+                        <li className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <span>2 Persons double paddler capacity</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <span>Shared paddling effort (Relaxing & easy)</span>
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <span>Ideal for couples, friends & parent + child</span>
+                        </li>
+                      </ul>
                     </div>
+
                     <button
                       onClick={() => onSelectOption('kayak-2seater')}
-                      className="mt-4 w-full bg-mangrove-700 hover:bg-mangrove-800 text-white text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                      className="mt-4 w-full bg-mangrove-900 hover:bg-mangrove-950 text-white text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-1.5 transition-colors shadow-sm"
                     >
                       <span>Select 2-Seater & Book</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
