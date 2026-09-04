@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Calendar, Phone, User, Search, Filter, Plus, Trash2, ArrowLeft, 
-  CheckCircle2, Clock, AlertCircle, XCircle, Sparkles, MessageCircle 
+  CheckCircle2, Clock, AlertCircle, XCircle, Sparkles, MessageCircle, Compass, Users 
 } from 'lucide-react';
 import { WhatsappIcon } from './WhatsappIcon';
 
@@ -282,17 +282,18 @@ export const AdminPage: React.FC = () => {
                       'bg-rose-50 text-rose-800 border-rose-200'
                     }`}
                   >
-                    <option value="Confirmed">✅ Confirmed</option>
-                    <option value="Pending">⏳ Pending</option>
-                    <option value="Completed">✨ Completed</option>
-                    <option value="Cancelled">❌ Cancelled</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Cancelled">Cancelled</option>
                   </select>
                 </div>
 
                 {/* Details */}
                 <div className="space-y-1.5 text-xs">
-                  <div className="font-extrabold text-mangrove-900 leading-snug">
-                    🚣 {b.activity}
+                  <div className="font-extrabold text-mangrove-900 leading-snug flex items-center gap-1.5">
+                    <Compass className="w-3.5 h-3.5 text-mangrove-700 shrink-0" />
+                    <span>{b.activity}</span>
                   </div>
 
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-600 font-medium">
@@ -301,7 +302,10 @@ export const AdminPage: React.FC = () => {
                       <span>{b.date || 'Flexible'}</span>
                     </span>
                     <span className="text-sunset-600 font-semibold">{b.timeSlot}</span>
-                    <span>👥 {b.guests} Guests</span>
+                    <span className="flex items-center gap-1">
+                      <Users className="w-3.5 h-3.5 text-slate-500" />
+                      <span>{b.guests} Guests</span>
+                    </span>
                   </div>
 
                   {b.message && (
@@ -417,10 +421,10 @@ export const AdminPage: React.FC = () => {
                             'bg-rose-50 text-rose-800 border-rose-200'
                           }`}
                         >
-                          <option value="Confirmed">✅ Confirmed</option>
-                          <option value="Pending">⏳ Pending</option>
-                          <option value="Completed">✨ Completed</option>
-                          <option value="Cancelled">❌ Cancelled</option>
+                          <option value="Confirmed">Confirmed</option>
+                          <option value="Pending">Pending</option>
+                          <option value="Completed">Completed</option>
+                          <option value="Cancelled">Cancelled</option>
                         </select>
                       </td>
 
