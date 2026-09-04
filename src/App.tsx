@@ -13,6 +13,7 @@ import { FloatingWhatsapp } from './components/FloatingWhatsapp';
 import { PolicyModal } from './components/PolicyModal';
 import { AdminPage } from './components/AdminPage';
 import { AnimatedSection } from './components/AnimatedSection';
+import { initDevToolsSignature } from './utils/devToolsSignature';
 
 export const App: React.FC = () => {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -27,16 +28,10 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
 
-  // Developer Signature Console Easter Egg
+  // Developer Signature Console Easter Egg & DevTools Detector
   useEffect(() => {
-    console.log(
-      "%cEngineered by Faiz.I",
-      "font-size: 42px; font-weight: 800; font-family: 'Courier New', monospace; color: #00ff9f; background: #09111e; padding: 12px 24px; border-radius: 8px; border: 1px solid #00ff9f; text-shadow: 0 0 12px rgba(0,255,159,0.5);"
-    );
-    console.log(
-      "%cNomadoo Varkala • Crafted with precision",
-      "font-size: 14px; font-weight: 600; font-family: 'Courier New', monospace; color: #38bdf8; padding-top: 4px;"
-    );
+    const cleanup = initDevToolsSignature();
+    return () => cleanup();
   }, []);
 
   // Simple routing for /admin
