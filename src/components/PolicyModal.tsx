@@ -40,7 +40,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ type, onClose }) => {
 
             <div className="space-y-4 text-xs sm:text-sm leading-relaxed">
               <div className="space-y-2">
-                <h4 className="font-extrabold text-slate-900 text-sm uppercase tracking-wider text-mangrove-800">
+                <h4 className="font-extrabold text-mangrove-800 text-sm uppercase tracking-wider">
                   Booking Terms:
                 </h4>
                 <ul className="list-disc list-inside space-y-1 text-slate-700 font-medium">
@@ -51,7 +51,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ type, onClose }) => {
               </div>
 
               <div className="space-y-2 pt-2 border-t border-sand-100">
-                <h4 className="font-extrabold text-slate-900 text-sm uppercase tracking-wider text-mangrove-800">
+                <h4 className="font-extrabold text-mangrove-800 text-sm uppercase tracking-wider">
                   Cancellation & Refund Policy:
                 </h4>
                 <ul className="list-disc list-inside space-y-1 text-slate-700 font-medium">
@@ -61,7 +61,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ type, onClose }) => {
               </div>
 
               <div className="space-y-2 pt-2 border-t border-sand-100">
-                <h4 className="font-extrabold text-slate-900 text-sm uppercase tracking-wider text-mangrove-800">
+                <h4 className="font-extrabold text-mangrove-800 text-sm uppercase tracking-wider">
                   Customer Responsibility:
                 </h4>
                 <ul className="list-disc list-inside space-y-1 text-slate-700 font-medium">

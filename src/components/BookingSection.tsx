@@ -3,10 +3,28 @@ import { WHATSAPP_NUMBER } from '../data/nomadooData';
 import { Calendar, Phone, User, Send, CheckCircle2, Shield, Compass, Star, ChevronDown, ChevronLeft, ChevronRight, Clock, Users, Waves } from 'lucide-react';
 import { WhatsappIcon } from './WhatsappIcon';
 
-export const BookingSection: React.FC = () => {
+interface BookingSectionProps {
+  selectedActivityId?: string;
+}
+
+export const BookingSection: React.FC<BookingSectionProps> = ({ selectedActivityId }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [activity, setActivity] = useState('Mangrove Kayaking (2-Seater Tandem)');
+
+  useEffect(() => {
+    if (selectedActivityId === 'kayak-1seater') {
+      setActivity('Mangrove Kayaking (1-Seater Solo)');
+    } else if (selectedActivityId === 'kayak-2seater') {
+      setActivity('Mangrove Kayaking (2-Seater Tandem)');
+    } else if (selectedActivityId === 'country-boating') {
+      setActivity('Mangrove Country Boating');
+    } else if (selectedActivityId === 'speed-boating') {
+      setActivity('Mangrove Semi Speed Boating');
+    } else if (selectedActivityId === 'standup-paddleboarding') {
+      setActivity('Stand Up Paddleboarding (SUP)');
+    }
+  }, [selectedActivityId]);
   const [date, setDate] = useState('');
   const [timeSlot, setTimeSlot] = useState('Sunrise Hour (6:00 AM - 9:00 AM)');
   const [guests, setGuests] = useState('2');
