@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { KayakingHighlightCard } from './components/KayakingHighlightCard';
@@ -11,10 +11,25 @@ import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsapp } from './components/FloatingWhatsapp';
 import { PolicyModal } from './components/PolicyModal';
+import { AdminPage } from './components/AdminPage';
 
 export const App: React.FC = () => {
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [selectedActivityId, setSelectedActivityId] = useState<string | undefined>(undefined);
   const [policyModal, setPolicyModal] = useState<'terms' | 'privacy' | null>(null);
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
+
+  // Simple routing for /admin
+  if (currentPath === '/admin' || window.location.hash === '#admin') {
+    return <AdminPage />;
+  }
 
   const scrollToBooking = (activityId?: string) => {
     if (activityId) {

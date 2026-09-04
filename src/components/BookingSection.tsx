@@ -128,6 +128,26 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ selectedActivity
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Save to localStorage for Admin Page view
+    try {
+      const existing = JSON.parse(localStorage.getItem('nomadoo_bookings') || '[]');
+      const newBooking = {
+        id: `NOM-${Math.floor(1000 + Math.random() * 9000)}`,
+        name: name || 'Valued Guest',
+        phone: phone || 'WhatsApp Inquiry',
+        activity: activity,
+        date: date || 'Flexible',
+        timeSlot: timeSlot,
+        guests: guests,
+        message: message,
+        status: 'Pending',
+        createdAt: new Date().toLocaleString()
+      };
+      localStorage.setItem('nomadoo_bookings', JSON.stringify([newBooking, ...existing]));
+    } catch (err) {
+      console.error(err);
+    }
+
     // Construct dynamic pre-filled message
     const formattedText = `*New Booking Request - Nomadoo Varkala*%0A%0A` +
       `👤 *Name:* ${name}%0A` +

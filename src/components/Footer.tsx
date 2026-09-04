@@ -1,6 +1,6 @@
 import React from 'react';
 import { CONTACT_PHONE_1, WHATSAPP_NUMBER, GOOGLE_MAPS_LINK } from '../data/nomadooData';
-import { Phone, MapPin, ArrowUp, ShieldCheck, FileText } from 'lucide-react';
+import { Phone, MapPin, ArrowUp, ShieldCheck, FileText, Lock } from 'lucide-react';
 import { WhatsappIcon } from './WhatsappIcon';
 
 interface FooterProps {
@@ -104,6 +104,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerms, onOpenPrivacy }) =>
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
               <span>Privacy Policy</span>
             </button>
+
+            <span className="text-slate-800">•</span>
+
+            <a
+              href="/admin"
+              className="hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
+            >
+              <Lock className="w-3.5 h-3.5 text-sunset-400" />
+              <span>Admin</span>
+            </a>
 
             <button
               onClick={scrollToTop}
