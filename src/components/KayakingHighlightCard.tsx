@@ -103,7 +103,7 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
                       {/* Photo Banner */}
                       <div className="relative h-28 sm:h-32 rounded-xl overflow-hidden shadow-inner">
                         <img
-                          src="/images/solo_green_kayak_mangrove.jpg"
+                          src="/images/single_yellow_kayak.jpg"
                           alt="1-Seater Solo Kayak Varkala"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
