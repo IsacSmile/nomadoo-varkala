@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle, Phone, Calendar, Clock, Users, User, CheckCircle2, ShieldAlert, Sparkles, Send } from 'lucide-react';
 import { CONTACT_PHONE_1, CONTACT_PHONE_2, WHATSAPP_NUMBER } from '../data/nomadooData';
+import { WhatsappIcon } from './WhatsappIcon';
 
 interface BookingSectionProps {
   selectedActivityId?: string;
@@ -278,9 +279,9 @@ Please confirm availability and share payment token details for best price. Than
               {/* Big Confirm WhatsApp Button */}
               <button
                 type="submit"
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-base py-4 px-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-3 transform hover:-translate-y-0.5 active:translate-y-0"
+                className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold text-base py-4 px-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-3 transform hover:-translate-y-0.5 active:translate-y-0"
               >
-                <MessageCircle className="w-6 h-6 fill-white text-emerald-600" />
+                <WhatsappIcon className="w-6 h-6 fill-white" />
                 <span>Confirm Booking via WhatsApp</span>
                 <Send className="w-4 h-4 ml-1" />
               </button>

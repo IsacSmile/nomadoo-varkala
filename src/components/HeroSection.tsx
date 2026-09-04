@@ -1,6 +1,7 @@
 import React from 'react';
 import { MessageCircle, Calendar, Sparkles, Shield, Compass, Star, ChevronRight } from 'lucide-react';
 import { CONTACT_PHONE_1, WHATSAPP_NUMBER } from '../data/nomadooData';
+import { WhatsappIcon } from './WhatsappIcon';
 
 interface HeroSectionProps {
   onBookClick: () => void;
@@ -128,9 +129,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookClick }) => {
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Nomadoo%20Varkala!%20I%20want%20to%20book%20a%20Mangrove%20Kayaking%20session.%20Please%20share%20available%20slots.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base px-6 py-3.5 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                className="flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-base px-6 py-3.5 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
               >
-                <MessageCircle className="w-5 h-5" />
+                <WhatsappIcon className="w-5 h-5 fill-white" />
                 <span>WhatsApp Us</span>
               </a>
             </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FAQS } from '../data/nomadooData';
-import { ChevronDown, HelpCircle, MessageCircle } from 'lucide-react';
+import { ChevronDown, HelpCircle } from 'lucide-react';
+import { WhatsappIcon } from './WhatsappIcon';
 
 export const FaqSection: React.FC = () => {
   const [openId, setOpenId] = useState<number | null>(1);
@@ -74,9 +75,9 @@ export const FaqSection: React.FC = () => {
             href="https://wa.me/919446110362?text=Hi%20Nomadoo!%20I%20have%20a%20question%20about%20your%20Varkala%20Kayaking%20tours."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white text-xs sm:text-sm font-bold px-6 py-3 rounded-xl shadow-md transition-all"
+            className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs sm:text-sm font-bold px-6 py-3 rounded-xl shadow-md transition-all"
           >
-            <MessageCircle className="w-4 h-4" />
+            <WhatsappIcon className="w-4 h-4 fill-white" />
             <span>Chat Live on WhatsApp</span>
           </a>
         </div>

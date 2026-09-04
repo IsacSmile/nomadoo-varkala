@@ -1,6 +1,7 @@
 import React from 'react';
 import { CONTACT_PHONE_1, CONTACT_PHONE_2, WHATSAPP_NUMBER } from '../data/nomadooData';
-import { Phone, MessageCircle, MapPin, Compass, ArrowUp } from 'lucide-react';
+import { Phone, MapPin, Compass, ArrowUp } from 'lucide-react';
+import { WhatsappIcon } from './WhatsappIcon';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -42,10 +43,10 @@ export const Footer: React.FC = () => {
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-emerald-600/20 text-emerald-400 hover:bg-emerald-600 hover:text-white flex items-center justify-center transition-colors border border-emerald-500/30"
+                className="w-9 h-9 rounded-xl bg-[#25D366]/20 text-[#25D366] hover:bg-[#25D366] hover:text-white flex items-center justify-center transition-colors border border-[#25D366]/30"
                 aria-label="WhatsApp"
               >
-                <MessageCircle className="w-4 h-4" />
+                <WhatsappIcon className="w-4 h-4 fill-current" />
               </a>
               <a
                 href={`tel:${CONTACT_PHONE_1.replace(/\s+/g, '')}`}
