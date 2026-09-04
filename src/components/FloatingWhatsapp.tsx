@@ -16,13 +16,13 @@ export const FloatingWhatsapp: React.FC = () => {
         href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Nomadoo%20Varkala!%20I%20want%20to%20inquire%20about%20Mangrove%20Kayaking%20and%20boating%20tours.`}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-2xl transition-transform transform group-hover:scale-110 active:scale-95"
+        className="relative w-14 h-14 rounded-full flex items-center justify-center transition-transform transform group-hover:scale-110 active:scale-95 shadow-2xl"
         aria-label="Chat on WhatsApp"
       >
         {/* Pulsing Ring */}
         <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-75 animate-ping -z-10" />
 
-        <WhatsappIcon className="w-8 h-8 fill-white" />
+        <WhatsappIcon className="w-14 h-14 drop-shadow-xl" showBackground={true} />
       </a>
 
     </div>
