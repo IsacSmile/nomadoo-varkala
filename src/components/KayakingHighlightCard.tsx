@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, ShieldCheck, User, Users, Compass, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Clock, ShieldCheck, User, Users, Compass, Sparkles, CheckCircle2, ArrowRight, Sun, Sunset } from 'lucide-react';
 import { MAIN_KAYAKING_ACTIVITY } from '../data/nomadooData';
 
 interface KayakingHighlightCardProps {
@@ -105,12 +105,18 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
 
                   <div className="flex items-center gap-2 w-full sm:w-auto">
                     <div className="flex-1 sm:flex-initial bg-white/10 px-3.5 py-1.5 rounded-xl border border-white/15 text-center">
-                      <span className="text-[9px] text-slate-300 uppercase font-bold block">Morning Batch</span>
-                      <span className="text-xs font-black text-white">🌅 Starts 6:00 AM</span>
+                      <span className="text-[9px] text-slate-300 uppercase font-bold tracking-wider block">Morning Batch</span>
+                      <span className="whitespace-nowrap text-xs font-black text-white inline-flex items-center justify-center gap-1">
+                        <Sun className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                        <span>Starts 6:00 AM</span>
+                      </span>
                     </div>
                     <div className="flex-1 sm:flex-initial bg-white/10 px-3.5 py-1.5 rounded-xl border border-white/15 text-center">
-                      <span className="text-[9px] text-slate-300 uppercase font-bold block">Evening Batch</span>
-                      <span className="text-xs font-black text-white">🌇 Starts 4:00 PM</span>
+                      <span className="text-[9px] text-slate-300 uppercase font-bold tracking-wider block">Evening Batch</span>
+                      <span className="whitespace-nowrap text-xs font-black text-white inline-flex items-center justify-center gap-1">
+                        <Sunset className="w-3.5 h-3.5 text-sunset-400 shrink-0" />
+                        <span>Starts 4:00 PM</span>
+                      </span>
                     </div>
                   </div>
                 </div>

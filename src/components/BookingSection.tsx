@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { WHATSAPP_NUMBER } from '../data/nomadooData';
-import { Calendar, Phone, User, Send, CheckCircle2, Shield, Compass, Star, ChevronDown, ChevronLeft, ChevronRight, Clock, Users, Waves } from 'lucide-react';
+import { Calendar, Phone, User, Send, CheckCircle2, Shield, Compass, Star, ChevronDown, ChevronLeft, ChevronRight, Clock, Users, Waves, Sun, Sunset } from 'lucide-react';
 import { WhatsappIcon } from './WhatsappIcon';
 
 interface BookingSectionProps {
@@ -221,10 +221,11 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ selectedActivity
                 {/* Morning Slot Box */}
                 <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 hover:border-sunset-400/50 transition-all space-y-1">
                   <div className="flex items-center justify-between text-sunset-300">
-                    <span className="text-xs font-black uppercase tracking-wider flex items-center gap-1">
-                      🌅 Morning Batch
+                    <span className="text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
+                      <Sun className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      <span>Morning Batch</span>
                     </span>
-                    <span className="text-[10px] font-extrabold bg-sunset-500/30 px-2 py-0.5 rounded-md text-sunset-200">
+                    <span className="whitespace-nowrap shrink-0 text-[10px] font-extrabold bg-sunset-500/30 px-2 py-0.5 rounded-md text-sunset-200">
                       Starts 6:00 AM
                     </span>
                   </div>
@@ -239,10 +240,11 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ selectedActivity
                 {/* Evening Slot Box */}
                 <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 hover:border-sunset-400/50 transition-all space-y-1">
                   <div className="flex items-center justify-between text-sunset-300">
-                    <span className="text-xs font-black uppercase tracking-wider flex items-center gap-1">
-                      🌇 Evening Batch
+                    <span className="text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
+                      <Sunset className="w-3.5 h-3.5 text-sunset-400 shrink-0" />
+                      <span>Evening Batch</span>
                     </span>
-                    <span className="text-[10px] font-extrabold bg-sunset-500/30 px-2 py-0.5 rounded-md text-sunset-200">
+                    <span className="whitespace-nowrap shrink-0 text-[10px] font-extrabold bg-sunset-500/30 px-2 py-0.5 rounded-md text-sunset-200">
                       Starts 4:00 PM
                     </span>
                   </div>
