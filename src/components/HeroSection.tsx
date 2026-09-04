@@ -135,8 +135,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookClick }) => {
                   </button>
                 </div>
 
-                {/* Rating & Active Slide Caption (Bottom Overlay) */}
-                <div className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-md p-3 sm:p-4 rounded-2xl border border-white/80 shadow-xl flex items-center justify-between z-10">
+                {/* Rating & Active Slide Caption (Bottom Overlay - Clickable to Google Maps) */}
+                <a
+                  href={GOOGLE_MAPS_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-3 left-3 right-3 bg-white/95 hover:bg-white backdrop-blur-md p-3 sm:p-4 rounded-2xl border border-white/80 shadow-xl flex items-center justify-between z-10 transition-all hover:scale-[1.01] group/review"
+                  title="View Google Reviews & Directions"
+                >
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1 text-sunset-500 mb-0.5 flex-wrap">
                       <div className="flex gap-0.5">
@@ -144,15 +150,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookClick }) => {
                           <Star key={i} className="w-3 h-3 fill-sunset-500 text-sunset-500" />
                         ))}
                       </div>
-                      <span className="text-[11px] sm:text-xs font-black text-slate-900 ml-1">
-                        4.9 ★ <span className="text-slate-600 font-bold">(876+ Google Reviews)</span>
+                      <span className="text-[11px] sm:text-xs font-black text-slate-900 ml-1 group-hover/review:text-mangrove-900 transition-colors">
+                        4.9 ★ <span className="text-slate-600 font-bold underline decoration-sand-300 group-hover/review:decoration-mangrove-500">(876+ Google Reviews)</span>
                       </span>
                     </div>
                     <p className="text-[11px] sm:text-xs font-bold text-slate-800 truncate">
                       {HERO_PHOTOS[currentSlide].title}
                     </p>
                   </div>
-                </div>
+                </a>
 
               </div>
 
@@ -169,14 +175,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookClick }) => {
                 <span>OFFICIAL VARKALA ECO-TOUR OPERATOR</span>
               </div>
 
-              <div className="inline-flex items-center gap-1.5 bg-white border border-sand-300 text-slate-900 px-3 py-1 rounded-full text-[11px] font-extrabold shadow-sm">
+              <a
+                href={GOOGLE_MAPS_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 bg-white hover:bg-sand-50 border border-sand-300 hover:border-sand-400 text-slate-900 px-3 py-1 rounded-full text-[11px] font-extrabold shadow-sm transition-all hover:shadow-md cursor-pointer"
+                title="Open Google Maps & Reviews"
+              >
                 <div className="flex items-center gap-0.5 text-sunset-500">
                   <Star className="w-3.5 h-3.5 fill-sunset-500 text-sunset-500" />
                 </div>
                 <span>4.9 ★</span>
                 <span className="text-slate-400 font-normal">•</span>
-                <span className="text-slate-700 font-bold">876+ Google Reviews</span>
-              </div>
+                <span className="text-slate-700 font-bold hover:underline">876+ Google Reviews</span>
+              </a>
             </div>
 
             {/* Main Headline */}
