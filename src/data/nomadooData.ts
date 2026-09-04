@@ -157,7 +157,7 @@ export const GALLERY_VIDEOS = [
     id: "v1",
     title: "Sunrise Mangrove Tunnel Ride",
     duration: "0:45",
-    poster: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80",
+    poster: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
     description: "Watch how peaceful the early morning paddling feels through thick mangrove tunnels."
   },
   {
