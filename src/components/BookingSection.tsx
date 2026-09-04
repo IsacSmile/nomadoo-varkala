@@ -10,6 +10,7 @@ interface BookingSectionProps {
 export const BookingSection: React.FC<BookingSectionProps> = ({ selectedActivityId }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [guestNamesInput, setGuestNamesInput] = useState('');
   const [activity, setActivity] = useState('Mangrove Kayaking (2-Seater Tandem)');
 
   useEffect(() => {
@@ -128,6 +129,10 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ selectedActivity
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    const parsedGuestNames = guestNamesInput 
+      ? guestNamesInput.split(',').map(s => s.trim()).filter(Boolean)
+      : [name || 'Valued Guest'];
+
     // Save to localStorage for Admin Page view
     try {
       const existing = JSON.parse(localStorage.getItem('nomadoo_bookings') || '[]');
@@ -139,6 +144,7 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ selectedActivity
         date: date || 'Flexible',
         timeSlot: timeSlot,
         guests: guests,
+        guestNames: parsedGuestNames,
         message: message,
         status: 'Pending',
         createdAt: new Date().toLocaleString()
@@ -150,8 +156,9 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ selectedActivity
 
     // Construct dynamic pre-filled message
     const formattedText = `*New Booking Request - Nomadoo Varkala*%0A%0A` +
-      `👤 *Name:* ${name}%0A` +
+      `👤 *Primary Contact:* ${name}%0A` +
       `📞 *Phone:* ${phone}%0A` +
+      (parsedGuestNames.length > 0 ? `👥 *Guest Names:* ${parsedGuestNames.join(', ')}%0A` : '') +
       `🚣 *Activity:* ${activity}%0A` +
       `📅 *Preferred Date:* ${date || 'Flexible / Next Available'}%0A` +
       `⏰ *Time Slot:* ${timeSlot}%0A` +
@@ -360,6 +367,23 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ selectedActivity
                       className="w-full bg-sand-50 border border-sand-300 focus:border-mangrove-600 focus:bg-white rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-900 outline-none transition-all"
                     />
                   </div>
+                </div>
+              </div>
+
+              {/* Guest Names Input (Comma Separated) */}
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Guest Names (e.g. Rahul, Priya, Ananya)
+                </label>
+                <div className="relative">
+                  <Users className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+                  <input
+                    type="text"
+                    placeholder="Enter guest names separated by commas"
+                    value={guestNamesInput}
+                    onChange={(e) => setGuestNamesInput(e.target.value)}
+                    className="w-full bg-sand-50 border border-sand-300 focus:border-mangrove-600 focus:bg-white rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-900 outline-none transition-all"
+                  />
                 </div>
               </div>
 

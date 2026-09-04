@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Calendar, Phone, User, Search, Filter, Plus, Trash2, ArrowLeft, 
-  CheckCircle2, Clock, AlertCircle, XCircle, Sparkles, MessageCircle, Compass, Users 
+  CheckCircle2, Clock, AlertCircle, XCircle, Sparkles, MessageCircle, Compass, Users, ChevronDown 
 } from 'lucide-react';
 import { WhatsappIcon } from './WhatsappIcon';
 
@@ -13,6 +13,7 @@ export interface BookingRecord {
   date: string;
   timeSlot: string;
   guests: string;
+  guestNames?: string[];
   message?: string;
   status: 'Confirmed' | 'Pending' | 'Completed' | 'Cancelled';
   createdAt: string;
@@ -22,6 +23,7 @@ const DEFAULT_BOOKINGS: BookingRecord[] = [
   {
     id: 'NOM-8921',
     name: 'Rahul Sharma',
+    guestNames: ['Rahul Sharma', 'Neha Sharma'],
     phone: '+91 98765 43210',
     activity: 'Mangrove Kayaking (2-Seater Tandem)',
     date: '2026-09-05',
@@ -34,6 +36,7 @@ const DEFAULT_BOOKINGS: BookingRecord[] = [
   {
     id: 'NOM-8922',
     name: 'Ananya Nair',
+    guestNames: ['Ananya Nair'],
     phone: '+91 94455 12345',
     activity: 'Mangrove Kayaking (1-Seater Solo)',
     date: '2026-09-05',
@@ -45,6 +48,7 @@ const DEFAULT_BOOKINGS: BookingRecord[] = [
   {
     id: 'NOM-8923',
     name: 'Vikram & Priya',
+    guestNames: ['Vikram Singh', 'Priya Singh', 'Aarav Singh', 'Riya Singh'],
     phone: '+91 91234 56789',
     activity: 'Mangrove Country Boating (Traditional)',
     date: '2026-09-06',
@@ -57,6 +61,7 @@ const DEFAULT_BOOKINGS: BookingRecord[] = [
   {
     id: 'NOM-8924',
     name: 'Sneha Kapur',
+    guestNames: ['Sneha Kapur', 'Rohan Kapur'],
     phone: '+91 99887 66554',
     activity: 'Stand Up Paddleboarding (SUP)',
     date: '2026-09-04',
@@ -66,6 +71,103 @@ const DEFAULT_BOOKINGS: BookingRecord[] = [
     createdAt: '2026-09-04 10:00'
   }
 ];
+
+interface CustomStatusDropdownProps {
+  value: BookingRecord['status'];
+  onChange: (newStatus: BookingRecord['status']) => void;
+}
+
+const STATUS_OPTIONS: { 
+  value: BookingRecord['status']; 
+  label: string; 
+  icon: React.ReactNode; 
+  badgeClass: string; 
+  activeClass: string;
+}[] = [
+  { 
+    value: 'Confirmed', 
+    label: 'Confirmed', 
+    icon: <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />,
+    badgeClass: 'bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100',
+    activeClass: 'bg-emerald-50 text-emerald-900 font-extrabold'
+  },
+  { 
+    value: 'Pending', 
+    label: 'Pending', 
+    icon: <Clock className="w-3.5 h-3.5 text-amber-600" />,
+    badgeClass: 'bg-amber-50 text-amber-800 border-amber-300 hover:bg-amber-100',
+    activeClass: 'bg-amber-50 text-amber-900 font-extrabold'
+  },
+  { 
+    value: 'Completed', 
+    label: 'Completed', 
+    icon: <Sparkles className="w-3.5 h-3.5 text-sky-600" />,
+    badgeClass: 'bg-sky-50 text-sky-800 border-sky-300 hover:bg-sky-100',
+    activeClass: 'bg-sky-50 text-sky-900 font-extrabold'
+  },
+  { 
+    value: 'Cancelled', 
+    label: 'Cancelled', 
+    icon: <XCircle className="w-3.5 h-3.5 text-rose-600" />,
+    badgeClass: 'bg-rose-50 text-rose-800 border-rose-300 hover:bg-rose-100',
+    activeClass: 'bg-rose-50 text-rose-900 font-extrabold'
+  }
+];
+
+export const CustomStatusDropdown: React.FC<CustomStatusDropdownProps> = ({ value, onChange }) => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const currentOpt = STATUS_OPTIONS.find(o => o.value === value) || STATUS_OPTIONS[0];
+
+  return (
+    <div ref={ref} className="relative inline-block text-left">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className={`text-xs font-extrabold px-3 py-1.5 rounded-xl outline-none border transition-all flex items-center gap-1.5 shadow-xs cursor-pointer ${currentOpt.badgeClass}`}
+      >
+        {currentOpt.icon}
+        <span>{currentOpt.label}</span>
+        <ChevronDown className={`w-3 h-3 text-slate-500 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+      </button>
+
+      {open && (
+        <div className="absolute right-0 mt-1.5 w-40 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200 shadow-xl p-1.5 z-30 animate-fadeIn space-y-1">
+          {STATUS_OPTIONS.map((opt) => (
+            <button
+              key={opt.value}
+              type="button"
+              onClick={() => {
+                onChange(opt.value);
+                setOpen(false);
+              }}
+              className={`w-full flex items-center justify-between px-3 py-2 text-xs rounded-xl transition-all ${
+                value === opt.value ? opt.activeClass : 'hover:bg-slate-50 text-slate-700'
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                {opt.icon}
+                <span className="font-bold">{opt.label}</span>
+              </div>
+              {value === opt.value && <CheckCircle2 className="w-3.5 h-3.5 text-mangrove-800" />}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export const AdminPage: React.FC = () => {
   const [bookings, setBookings] = useState<BookingRecord[]>([]);
@@ -80,6 +182,7 @@ export const AdminPage: React.FC = () => {
   const [newDate, setNewDate] = useState('');
   const [newSlot, setNewSlot] = useState('Morning Sunrise Batch (Starts 6:00 AM)');
   const [newGuests, setNewGuests] = useState('2');
+  const [newGuestNamesInput, setNewGuestNamesInput] = useState('');
 
   useEffect(() => {
     const saved = localStorage.getItem('nomadoo_bookings');
@@ -116,6 +219,10 @@ export const AdminPage: React.FC = () => {
     e.preventDefault();
     if (!newName || !newPhone) return;
 
+    const parsedGuestNames = newGuestNamesInput 
+      ? newGuestNamesInput.split(',').map(s => s.trim()).filter(Boolean)
+      : [newName];
+
     const newBooking: BookingRecord = {
       id: `NOM-${Math.floor(1000 + Math.random() * 9000)}`,
       name: newName,
@@ -123,7 +230,8 @@ export const AdminPage: React.FC = () => {
       activity: newActivity,
       date: newDate || new Date().toISOString().split('T')[0],
       timeSlot: newSlot,
-      guests: newGuests,
+      guests: parsedGuestNames.length > 0 ? String(parsedGuestNames.length) : newGuests,
+      guestNames: parsedGuestNames,
       status: 'Confirmed',
       createdAt: new Date().toLocaleString()
     };
@@ -133,6 +241,7 @@ export const AdminPage: React.FC = () => {
     setShowAddModal(false);
     setNewName('');
     setNewPhone('');
+    setNewGuestNamesInput('');
   };
 
   const filteredBookings = bookings.filter(b => {
@@ -140,7 +249,8 @@ export const AdminPage: React.FC = () => {
       b.name.toLowerCase().includes(search.toLowerCase()) ||
       b.phone.includes(search) ||
       b.activity.toLowerCase().includes(search.toLowerCase()) ||
-      b.id.toLowerCase().includes(search.toLowerCase());
+      b.id.toLowerCase().includes(search.toLowerCase()) ||
+      (b.guestNames && b.guestNames.some(g => g.toLowerCase().includes(search.toLowerCase())));
     
     const matchesStatus = statusFilter === 'All' || b.status === statusFilter;
     return matchesSearch && matchesStatus;
@@ -186,9 +296,8 @@ export const AdminPage: React.FC = () => {
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         
-        {/* Metrics Row - Simple White 80% Cards */}
+        {/* Metrics Row */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-          
           <div className="bg-white/80 backdrop-blur-sm p-4 rounded-2xl border border-slate-200/80 shadow-sm space-y-1">
             <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Total Bookings</span>
             <div className="text-2xl sm:text-3xl font-black text-slate-900">{bookings.length}</div>
@@ -214,26 +323,22 @@ export const AdminPage: React.FC = () => {
               {bookings.filter(b => b.status === 'Completed').length}
             </div>
           </div>
-
         </div>
 
         {/* Filter & Search Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-slate-200/80 shadow-sm">
-          
-          {/* Search Input */}
           <div className="relative w-full sm:w-80">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search name, phone, activity..."
+              placeholder="Search name, guest name, phone..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full bg-slate-50 border border-slate-200 focus:border-mangrove-600 focus:bg-white rounded-xl pl-9 pr-4 py-2 text-xs text-slate-900 placeholder-slate-400 outline-none transition-all"
             />
           </div>
 
-          {/* Status Filter Chips */}
-          <div className="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+          <div className="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto no-scrollbar py-0.5">
             {['All', 'Confirmed', 'Pending', 'Completed', 'Cancelled'].map((status) => (
               <button
                 key={status}
@@ -248,10 +353,9 @@ export const AdminPage: React.FC = () => {
               </button>
             ))}
           </div>
-
         </div>
 
-        {/* MOBILE VIEW: Ultra-Simple Cards Layout */}
+        {/* MOBILE VIEW: Cards Layout */}
         <div className="block md:hidden space-y-3">
           {filteredBookings.length === 0 ? (
             <div className="bg-white/80 p-8 rounded-2xl text-center space-y-2 border border-slate-200">
@@ -264,33 +368,22 @@ export const AdminPage: React.FC = () => {
                 key={b.id} 
                 className="bg-white/90 backdrop-blur-sm rounded-2xl border border-slate-200 p-4 shadow-sm space-y-3"
               >
-                {/* Header Row: Customer Name & ID */}
+                {/* Header Row: Customer Name & Customized Dropdown */}
                 <div className="flex items-start justify-between gap-2 pb-2 border-b border-slate-100">
                   <div>
                     <span className="text-[10px] font-mono font-bold text-slate-400 block">{b.id}</span>
                     <h4 className="text-sm font-black text-slate-900">{b.name}</h4>
                   </div>
 
-                  {/* Status Dropdown Selector */}
-                  <select
-                    value={b.status}
-                    onChange={(e) => handleStatusChange(b.id, e.target.value as BookingRecord['status'])}
-                    className={`text-xs font-extrabold px-2.5 py-1 rounded-xl outline-none border cursor-pointer ${
-                      b.status === 'Confirmed' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' :
-                      b.status === 'Pending' ? 'bg-amber-50 text-amber-800 border-amber-200' :
-                      b.status === 'Completed' ? 'bg-sky-50 text-sky-800 border-sky-200' :
-                      'bg-rose-50 text-rose-800 border-rose-200'
-                    }`}
-                  >
-                    <option value="Confirmed">Confirmed</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Completed">Completed</option>
-                    <option value="Cancelled">Cancelled</option>
-                  </select>
+                  {/* Customized Status Dropdown Component */}
+                  <CustomStatusDropdown 
+                    value={b.status} 
+                    onChange={(newStatus) => handleStatusChange(b.id, newStatus)} 
+                  />
                 </div>
 
                 {/* Details */}
-                <div className="space-y-1.5 text-xs">
+                <div className="space-y-2 text-xs">
                   <div className="font-extrabold text-mangrove-900 leading-snug flex items-center gap-1.5">
                     <Compass className="w-3.5 h-3.5 text-mangrove-700 shrink-0" />
                     <span>{b.activity}</span>
@@ -308,8 +401,28 @@ export const AdminPage: React.FC = () => {
                     </span>
                   </div>
 
+                  {/* Multiple Guest Names Pill Container */}
+                  {b.guestNames && b.guestNames.length > 0 && (
+                    <div className="bg-sand-50/80 p-2.5 rounded-xl border border-sand-200/80 space-y-1">
+                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
+                        <Users className="w-3 h-3 text-mangrove-700" />
+                        Guest List ({b.guestNames.length}):
+                      </span>
+                      <div className="flex flex-wrap gap-1">
+                        {b.guestNames.map((gName, idx) => (
+                          <span 
+                            key={idx} 
+                            className="bg-white border border-sand-300 text-slate-800 text-[11px] font-extrabold px-2 py-0.5 rounded-lg shadow-xs"
+                          >
+                            {gName}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   {b.message && (
-                    <div className="bg-sand-50 p-2 rounded-lg border border-sand-200 text-[11px] text-slate-600 italic">
+                    <div className="bg-slate-50 p-2 rounded-lg border border-slate-200 text-[11px] text-slate-600 italic">
                       "{b.message}"
                     </div>
                   )}
@@ -366,7 +479,7 @@ export const AdminPage: React.FC = () => {
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-200 text-[11px] font-extrabold uppercase tracking-wider text-slate-500">
                     <th className="py-3.5 px-4">Booking ID</th>
-                    <th className="py-3.5 px-4">Customer</th>
+                    <th className="py-3.5 px-4">Customer & Guest List</th>
                     <th className="py-3.5 px-4">Activity</th>
                     <th className="py-3.5 px-4">Date & Slot</th>
                     <th className="py-3.5 px-4">Guests</th>
@@ -382,9 +495,23 @@ export const AdminPage: React.FC = () => {
                         {b.id}
                       </td>
 
-                      <td className="py-4 px-4">
-                        <div className="font-extrabold text-slate-900">{b.name}</div>
+                      {/* Customer & Guest Names */}
+                      <td className="py-4 px-4 max-w-xs">
+                        <div className="font-extrabold text-slate-900 text-sm">{b.name}</div>
                         <div className="text-slate-500 text-[11px] font-mono mt-0.5">{b.phone}</div>
+                        
+                        {b.guestNames && b.guestNames.length > 0 && (
+                          <div className="flex flex-wrap gap-1 mt-1.5">
+                            {b.guestNames.map((gName, idx) => (
+                              <span 
+                                key={idx}
+                                className="bg-sand-100 border border-sand-300 text-slate-800 text-[10px] font-extrabold px-1.5 py-0.5 rounded-md"
+                              >
+                                {gName}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </td>
 
                       <td className="py-4 px-4 max-w-xs">
@@ -410,22 +537,12 @@ export const AdminPage: React.FC = () => {
                         {b.guests} {parseInt(b.guests) === 1 ? 'Guest' : 'Guests'}
                       </td>
 
+                      {/* Status Dropdown */}
                       <td className="py-4 px-4">
-                        <select
-                          value={b.status}
-                          onChange={(e) => handleStatusChange(b.id, e.target.value as BookingRecord['status'])}
-                          className={`text-xs font-extrabold px-2.5 py-1 rounded-xl outline-none border cursor-pointer ${
-                            b.status === 'Confirmed' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' :
-                            b.status === 'Pending' ? 'bg-amber-50 text-amber-800 border-amber-200' :
-                            b.status === 'Completed' ? 'bg-sky-50 text-sky-800 border-sky-200' :
-                            'bg-rose-50 text-rose-800 border-rose-200'
-                          }`}
-                        >
-                          <option value="Confirmed">Confirmed</option>
-                          <option value="Pending">Pending</option>
-                          <option value="Completed">Completed</option>
-                          <option value="Cancelled">Cancelled</option>
-                        </select>
+                        <CustomStatusDropdown 
+                          value={b.status} 
+                          onChange={(newStatus) => handleStatusChange(b.id, newStatus)} 
+                        />
                       </td>
 
                       <td className="py-4 px-4 text-right">
@@ -484,7 +601,7 @@ export const AdminPage: React.FC = () => {
 
             <form onSubmit={handleAddManualBooking} className="space-y-3 text-xs">
               <div>
-                <label className="block text-slate-700 font-bold mb-1">Customer Name</label>
+                <label className="block text-slate-700 font-bold mb-1">Primary Customer Name *</label>
                 <input
                   type="text"
                   required
@@ -496,7 +613,7 @@ export const AdminPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-slate-700 font-bold mb-1">Phone Number</label>
+                <label className="block text-slate-700 font-bold mb-1">Phone Number *</label>
                 <input
                   type="text"
                   required
@@ -505,6 +622,20 @@ export const AdminPage: React.FC = () => {
                   onChange={(e) => setNewPhone(e.target.value)}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-900 outline-none focus:border-mangrove-600"
                 />
+              </div>
+
+              <div>
+                <label className="block text-slate-700 font-bold mb-1">
+                  Guest Names (comma separated)
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Rahul Sharma, Neha Sharma, Ananya Sharma"
+                  value={newGuestNamesInput}
+                  onChange={(e) => setNewGuestNamesInput(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-900 outline-none focus:border-mangrove-600"
+                />
+                <p className="text-[10px] text-slate-400 mt-1">Separate multiple guest names using commas.</p>
               </div>
 
               <div>
@@ -532,7 +663,7 @@ export const AdminPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-700 font-bold mb-1">Guests</label>
+                  <label className="block text-slate-700 font-bold mb-1">Total Guests</label>
                   <input
                     type="number"
                     min="1"
