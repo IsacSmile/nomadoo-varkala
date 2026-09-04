@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { WHATSAPP_NUMBER } from '../data/nomadooData';
-import { Calendar, Phone, User, Send, CheckCircle2, Shield, Compass, Star, ChevronDown, Clock, Users, Waves } from 'lucide-react';
+import { Calendar, Phone, User, Send, CheckCircle2, Shield, Compass, Star, ChevronDown, ChevronLeft, ChevronRight, Clock, Users, Waves } from 'lucide-react';
 import { WhatsappIcon } from './WhatsappIcon';
 
 export const BookingSection: React.FC = () => {
@@ -16,12 +16,17 @@ export const BookingSection: React.FC = () => {
   const [activityOpen, setActivityOpen] = useState(false);
   const [slotOpen, setSlotOpen] = useState(false);
   const [guestsOpen, setGuestsOpen] = useState(false);
+  const [calendarOpen, setCalendarOpen] = useState(false);
+
+  const today = new Date();
+  const [viewDate, setViewDate] = useState(new Date());
 
   const activityRef = useRef<HTMLDivElement>(null);
   const slotRef = useRef<HTMLDivElement>(null);
   const guestsRef = useRef<HTMLDivElement>(null);
+  const calendarRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdowns on click outside
+  // Close dropdowns & calendar on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (activityRef.current && !activityRef.current.contains(event.target as Node)) {
@@ -33,10 +38,58 @@ export const BookingSection: React.FC = () => {
       if (guestsRef.current && !guestsRef.current.contains(event.target as Node)) {
         setGuestsOpen(false);
       }
+      if (calendarRef.current && !calendarRef.current.contains(event.target as Node)) {
+        setCalendarOpen(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  // Custom Calendar Helpers
+  const monthsList = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  const daysOfWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+
+  const getDaysInMonth = (year: number, month: number) => {
+    return new Date(year, month + 1, 0).getDate();
+  };
+
+  const getFirstDayOfMonth = (year: number, month: number) => {
+    return new Date(year, month, 1).getDay();
+  };
+
+  const handlePrevMonth = () => {
+    setViewDate(new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1));
+  };
+
+  const handleNextMonth = () => {
+    setViewDate(new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1));
+  };
+
+  const formatDateString = (year: number, month: number, day: number) => {
+    const m = String(month + 1).padStart(2, '0');
+    const d = String(day).padStart(2, '0');
+    return `${year}-${m}-${d}`;
+  };
+
+  const formatDisplayDate = (dateStr: string) => {
+    if (!dateStr) return 'Select Date';
+    const parts = dateStr.split('-');
+    if (parts.length !== 3) return dateStr;
+    const d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+    return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  };
+
+  const setQuickDate = (daysToAdd: number) => {
+    const d = new Date();
+    d.setDate(d.getDate() + daysToAdd);
+    const dateStr = formatDateString(d.getFullYear(), d.getMonth(), d.getDate());
+    setDate(dateStr);
+    setCalendarOpen(false);
+  };
 
   const activitiesList = [
     { label: 'Mangrove Kayaking - 1-Seater (Single)', val: 'Mangrove Kayaking (1-Seater Single)' },
@@ -252,16 +305,135 @@ export const BookingSection: React.FC = () => {
 
               {/* Date, Time Slot & Guests */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Preferred Date
+                {/* Custom Luxury Calendar Picker */}
+                <div ref={calendarRef} className="relative">
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+                    <span>Preferred Date</span>
+                    {date && (
+                      <button
+                        type="button"
+                        onClick={() => setDate('')}
+                        className="text-[10px] text-mangrove-700 hover:underline font-semibold"
+                      >
+                        Clear
+                      </button>
+                    )}
                   </label>
-                  <input
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    className="w-full bg-sand-50 border border-sand-300 focus:border-mangrove-600 focus:bg-white rounded-xl px-3 py-2.5 text-xs font-medium text-slate-900 outline-none transition-all"
-                  />
+
+                  <button
+                    type="button"
+                    onClick={() => setCalendarOpen(!calendarOpen)}
+                    className="w-full bg-sand-50 hover:bg-sand-100/80 border border-sand-300 focus:border-mangrove-600 focus:bg-white rounded-xl px-3 py-2.5 text-xs font-bold text-slate-900 outline-none transition-all flex items-center justify-between shadow-sm cursor-pointer"
+                  >
+                    <div className="flex items-center gap-1.5 truncate">
+                      <Calendar className="w-3.5 h-3.5 text-mangrove-700 shrink-0" />
+                      <span className={date ? 'text-slate-900 font-extrabold' : 'text-slate-500 font-medium'}>
+                        {formatDisplayDate(date)}
+                      </span>
+                    </div>
+                    <ChevronDown className={`w-3.5 h-3.5 text-slate-500 transition-transform duration-200 shrink-0 ${calendarOpen ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  {calendarOpen && (
+                    <div className="absolute top-full left-0 mt-1.5 bg-white border border-sand-300 rounded-2xl shadow-2xl p-3.5 z-40 animate-fadeIn w-72 sm:w-80">
+                      
+                      {/* Quick Chips */}
+                      <div className="flex items-center gap-1.5 pb-2.5 mb-2.5 border-b border-sand-200 overflow-x-auto">
+                        <button
+                          type="button"
+                          onClick={() => setQuickDate(0)}
+                          className="px-2.5 py-1 bg-mangrove-100 hover:bg-mangrove-200 text-mangrove-900 text-[10px] font-extrabold rounded-lg shrink-0 transition-colors"
+                        >
+                          Today
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setQuickDate(1)}
+                          className="px-2.5 py-1 bg-sand-100 hover:bg-sand-200 text-slate-800 text-[10px] font-bold rounded-lg shrink-0 transition-colors"
+                        >
+                          Tomorrow
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setQuickDate(2)}
+                          className="px-2.5 py-1 bg-sand-100 hover:bg-sand-200 text-slate-800 text-[10px] font-bold rounded-lg shrink-0 transition-colors"
+                        >
+                          In 2 Days
+                        </button>
+                      </div>
+
+                      {/* Month & Year Navigation Header */}
+                      <div className="flex items-center justify-between mb-2 px-1">
+                        <button
+                          type="button"
+                          onClick={handlePrevMonth}
+                          className="p-1 rounded-lg hover:bg-sand-100 text-slate-600 transition-colors"
+                        >
+                          <ChevronLeft className="w-4 h-4" />
+                        </button>
+                        <span className="text-xs font-black text-slate-900">
+                          {monthsList[viewDate.getMonth()]} {viewDate.getFullYear()}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={handleNextMonth}
+                          className="p-1 rounded-lg hover:bg-sand-100 text-slate-600 transition-colors"
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                      </div>
+
+                      {/* Days of Week Header */}
+                      <div className="grid grid-cols-7 gap-1 text-center mb-1">
+                        {daysOfWeek.map((day) => (
+                          <span key={day} className="text-[10px] font-bold text-slate-400 uppercase">
+                            {day}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Calendar Days Grid */}
+                      <div className="grid grid-cols-7 gap-1 text-center">
+                        {/* Empty padding cells */}
+                        {[...Array(getFirstDayOfMonth(viewDate.getFullYear(), viewDate.getMonth()))].map((_, i) => (
+                          <div key={`empty-${i}`} className="h-8" />
+                        ))}
+
+                        {/* Day cells */}
+                        {[...Array(getDaysInMonth(viewDate.getFullYear(), viewDate.getMonth()))].map((_, i) => {
+                          const dayNum = i + 1;
+                          const cellDateStr = formatDateString(viewDate.getFullYear(), viewDate.getMonth(), dayNum);
+                          const isSelected = date === cellDateStr;
+                          
+                          // Check if past date
+                          const cellDateObj = new Date(viewDate.getFullYear(), viewDate.getMonth(), dayNum, 23, 59, 59);
+                          const isPast = cellDateObj < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+                          return (
+                            <button
+                              key={dayNum}
+                              type="button"
+                              disabled={isPast}
+                              onClick={() => {
+                                setDate(cellDateStr);
+                                setCalendarOpen(false);
+                              }}
+                              className={`h-8 w-8 mx-auto rounded-xl text-xs font-bold transition-all flex items-center justify-between justify-center ${
+                                isPast
+                                  ? 'text-slate-300 cursor-not-allowed line-through opacity-50'
+                                  : isSelected
+                                  ? 'bg-mangrove-900 text-white font-extrabold shadow-md scale-105'
+                                  : 'hover:bg-mangrove-100 text-slate-800 hover:text-mangrove-950'
+                              }`}
+                            >
+                              {dayNum}
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                    </div>
+                  )}
                 </div>
 
                 {/* Custom Time Slot Dropdown */}
