@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Calendar, Phone, User, Search, Filter, Plus, Trash2, ArrowLeft, 
-  CheckCircle2, Clock, AlertCircle, XCircle, Sparkles, RefreshCw 
+  CheckCircle2, Clock, AlertCircle, XCircle, Sparkles, MessageCircle 
 } from 'lucide-react';
 import { WhatsappIcon } from './WhatsappIcon';
 
@@ -146,132 +146,102 @@ export const AdminPage: React.FC = () => {
     return matchesSearch && matchesStatus;
   });
 
-  const getStatusBadge = (status: BookingRecord['status']) => {
-    switch (status) {
-      case 'Confirmed':
-        return (
-          <span className="inline-flex items-center gap-1 bg-emerald-500/10 text-emerald-700 font-extrabold text-xs px-2.5 py-1 rounded-full border border-emerald-500/30">
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            <span>Confirmed</span>
-          </span>
-        );
-      case 'Pending':
-        return (
-          <span className="inline-flex items-center gap-1 bg-amber-500/10 text-amber-700 font-extrabold text-xs px-2.5 py-1 rounded-full border border-amber-500/30">
-            <Clock className="w-3.5 h-3.5 animate-pulse" />
-            <span>Pending</span>
-          </span>
-        );
-      case 'Completed':
-        return (
-          <span className="inline-flex items-center gap-1 bg-sky-500/10 text-sky-700 font-extrabold text-xs px-2.5 py-1 rounded-full border border-sky-500/30">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Completed</span>
-          </span>
-        );
-      case 'Cancelled':
-        return (
-          <span className="inline-flex items-center gap-1 bg-rose-500/10 text-rose-700 font-extrabold text-xs px-2.5 py-1 rounded-full border border-rose-500/30">
-            <XCircle className="w-3.5 h-3.5" />
-            <span>Cancelled</span>
-          </span>
-        );
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-mangrove-900 selection:text-white">
+    <div className="min-h-screen bg-slate-100/80 text-slate-800 font-sans selection:bg-mangrove-100 selection:text-mangrove-900 pb-16">
       
-      {/* Top Admin Header */}
-      <header className="bg-slate-900 border-b border-slate-800 sticky top-0 z-40">
+      {/* Top Admin Header - Clean Light White 80% */}
+      <header className="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <a 
               href="/"
-              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-bold"
+              className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors flex items-center gap-1.5 text-xs font-bold"
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="hidden sm:inline">Main Site</span>
             </a>
 
             <div className="flex items-center gap-2">
-              <div className="bg-white p-1 rounded-lg">
+              <div className="bg-sand-100 p-1 rounded-lg border border-sand-300">
                 <img src="/logo.jpg" alt="Nomadoo Logo" className="h-6 w-auto object-contain rounded" />
               </div>
-              <span className="text-base font-extrabold tracking-tight text-white">
-                NOMADOO <span className="text-sunset-500">ADMIN</span>
+              <span className="text-base font-extrabold tracking-tight text-slate-900">
+                NOMADOO <span className="text-mangrove-800 font-extrabold">ADMIN</span>
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setShowAddModal(true)}
-              className="bg-mangrove-800 hover:bg-mangrove-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-md transition-colors"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Add Booking</span>
-            </button>
-          </div>
+          <button
+            onClick={() => setShowAddModal(true)}
+            className="bg-mangrove-800 hover:bg-mangrove-900 text-white text-xs font-extrabold px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-md transition-all active:scale-95"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Add Booking</span>
+          </button>
 
         </div>
       </header>
 
-      {/* Main Admin Content Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      {/* Main Container */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         
-        {/* Metrics Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="bg-slate-900 p-4 rounded-2xl border border-slate-800 space-y-1">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Bookings</span>
-            <div className="text-2xl sm:text-3xl font-black text-white">{bookings.length}</div>
+        {/* Metrics Row - Simple White 80% Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+          
+          <div className="bg-white/80 backdrop-blur-sm p-4 rounded-2xl border border-slate-200/80 shadow-sm space-y-1">
+            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Total Bookings</span>
+            <div className="text-2xl sm:text-3xl font-black text-slate-900">{bookings.length}</div>
           </div>
-          <div className="bg-slate-900 p-4 rounded-2xl border border-slate-800 space-y-1">
-            <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Confirmed</span>
-            <div className="text-2xl sm:text-3xl font-black text-emerald-400">
+
+          <div className="bg-white/80 backdrop-blur-sm p-4 rounded-2xl border border-emerald-200/80 shadow-sm space-y-1">
+            <span className="text-[11px] font-bold text-emerald-700 uppercase tracking-wider">Confirmed</span>
+            <div className="text-2xl sm:text-3xl font-black text-emerald-600">
               {bookings.filter(b => b.status === 'Confirmed').length}
             </div>
           </div>
-          <div className="bg-slate-900 p-4 rounded-2xl border border-slate-800 space-y-1">
-            <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">Pending</span>
-            <div className="text-2xl sm:text-3xl font-black text-amber-400">
+
+          <div className="bg-white/80 backdrop-blur-sm p-4 rounded-2xl border border-amber-200/80 shadow-sm space-y-1">
+            <span className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">Pending</span>
+            <div className="text-2xl sm:text-3xl font-black text-amber-600">
               {bookings.filter(b => b.status === 'Pending').length}
             </div>
           </div>
-          <div className="bg-slate-900 p-4 rounded-2xl border border-slate-800 space-y-1">
-            <span className="text-xs font-bold text-sky-400 uppercase tracking-wider">Completed</span>
-            <div className="text-2xl sm:text-3xl font-black text-sky-400">
+
+          <div className="bg-white/80 backdrop-blur-sm p-4 rounded-2xl border border-sky-200/80 shadow-sm space-y-1">
+            <span className="text-[11px] font-bold text-sky-700 uppercase tracking-wider">Completed</span>
+            <div className="text-2xl sm:text-3xl font-black text-sky-600">
               {bookings.filter(b => b.status === 'Completed').length}
             </div>
           </div>
+
         </div>
 
-        {/* Filter & Search Controls */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-900 p-4 rounded-2xl border border-slate-800">
+        {/* Filter & Search Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-slate-200/80 shadow-sm">
           
-          {/* Search */}
+          {/* Search Input */}
           <div className="relative w-full sm:w-80">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search by name, phone, activity..."
+              placeholder="Search name, phone, activity..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 focus:border-mangrove-600 rounded-xl pl-9 pr-4 py-2 text-xs text-white placeholder-slate-500 outline-none transition-all"
+              className="w-full bg-slate-50 border border-slate-200 focus:border-mangrove-600 focus:bg-white rounded-xl pl-9 pr-4 py-2 text-xs text-slate-900 placeholder-slate-400 outline-none transition-all"
             />
           </div>
 
-          {/* Status Filters */}
-          <div className="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
+          {/* Status Filter Chips */}
+          <div className="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
             {['All', 'Confirmed', 'Pending', 'Completed', 'Cancelled'].map((status) => (
               <button
                 key={status}
                 onClick={() => setStatusFilter(status)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
                   statusFilter === status
-                    ? 'bg-mangrove-800 text-white shadow-md'
-                    : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
+                    ? 'bg-mangrove-800 text-white shadow-sm'
+                    : 'bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200'
                 }`}
               >
                 {status}
@@ -281,19 +251,116 @@ export const AdminPage: React.FC = () => {
 
         </div>
 
-        {/* Bookings Table / List */}
-        <div className="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden shadow-2xl">
-          
+        {/* MOBILE VIEW: Ultra-Simple Cards Layout */}
+        <div className="block md:hidden space-y-3">
           {filteredBookings.length === 0 ? (
-            <div className="p-12 text-center space-y-3">
-              <AlertCircle className="w-8 h-8 text-slate-500 mx-auto" />
-              <p className="text-sm text-slate-400 font-semibold">No booking records found.</p>
+            <div className="bg-white/80 p-8 rounded-2xl text-center space-y-2 border border-slate-200">
+              <AlertCircle className="w-6 h-6 text-slate-400 mx-auto" />
+              <p className="text-xs text-slate-500 font-bold">No bookings found.</p>
+            </div>
+          ) : (
+            filteredBookings.map((b) => (
+              <div 
+                key={b.id} 
+                className="bg-white/90 backdrop-blur-sm rounded-2xl border border-slate-200 p-4 shadow-sm space-y-3"
+              >
+                {/* Header Row: Customer Name & ID */}
+                <div className="flex items-start justify-between gap-2 pb-2 border-b border-slate-100">
+                  <div>
+                    <span className="text-[10px] font-mono font-bold text-slate-400 block">{b.id}</span>
+                    <h4 className="text-sm font-black text-slate-900">{b.name}</h4>
+                  </div>
+
+                  {/* Status Dropdown Selector */}
+                  <select
+                    value={b.status}
+                    onChange={(e) => handleStatusChange(b.id, e.target.value as BookingRecord['status'])}
+                    className={`text-xs font-extrabold px-2.5 py-1 rounded-xl outline-none border cursor-pointer ${
+                      b.status === 'Confirmed' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' :
+                      b.status === 'Pending' ? 'bg-amber-50 text-amber-800 border-amber-200' :
+                      b.status === 'Completed' ? 'bg-sky-50 text-sky-800 border-sky-200' :
+                      'bg-rose-50 text-rose-800 border-rose-200'
+                    }`}
+                  >
+                    <option value="Confirmed">✅ Confirmed</option>
+                    <option value="Pending">⏳ Pending</option>
+                    <option value="Completed">✨ Completed</option>
+                    <option value="Cancelled">❌ Cancelled</option>
+                  </select>
+                </div>
+
+                {/* Details */}
+                <div className="space-y-1.5 text-xs">
+                  <div className="font-extrabold text-mangrove-900 leading-snug">
+                    🚣 {b.activity}
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-600 font-medium">
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-3.5 h-3.5 text-mangrove-700" />
+                      <span>{b.date || 'Flexible'}</span>
+                    </span>
+                    <span className="text-sunset-600 font-semibold">{b.timeSlot}</span>
+                    <span>👥 {b.guests} Guests</span>
+                  </div>
+
+                  {b.message && (
+                    <div className="bg-sand-50 p-2 rounded-lg border border-sand-200 text-[11px] text-slate-600 italic">
+                      "{b.message}"
+                    </div>
+                  )}
+                </div>
+
+                {/* Mobile Quick Action Buttons */}
+                <div className="pt-2 flex items-center justify-between gap-2 border-t border-slate-100">
+                  <span className="text-[11px] font-mono text-slate-400">{b.phone}</span>
+
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={`https://wa.me/${b.phone.replace(/[^0-9]/g, '')}?text=Hi%20${encodeURIComponent(b.name)},%20regarding%20your%20Nomadoo%20Varkala%20booking%20(${b.id})...`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 bg-[#25D366] text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xs"
+                    >
+                      <WhatsappIcon className="w-3.5 h-3.5 fill-white" showBackground={false} />
+                      <span>WhatsApp</span>
+                    </a>
+
+                    <a
+                      href={`tel:${b.phone.replace(/[^0-9]/g, '')}`}
+                      className="p-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700"
+                      title="Call"
+                    >
+                      <Phone className="w-4 h-4" />
+                    </a>
+
+                    <button
+                      onClick={() => handleDelete(b.id)}
+                      className="p-1.5 rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100"
+                      title="Delete"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* DESKTOP VIEW: Clean Table Layout */}
+        <div className="hidden md:block bg-white/80 backdrop-blur-sm rounded-3xl border border-slate-200/80 overflow-hidden shadow-sm">
+          {filteredBookings.length === 0 ? (
+            <div className="p-12 text-center space-y-2">
+              <AlertCircle className="w-8 h-8 text-slate-400 mx-auto" />
+              <p className="text-xs text-slate-500 font-bold">No booking records found.</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-slate-950/60 border-b border-slate-800 text-[11px] font-extrabold uppercase tracking-wider text-slate-400">
+                  <tr className="bg-slate-50 border-b border-slate-200 text-[11px] font-extrabold uppercase tracking-wider text-slate-500">
                     <th className="py-3.5 px-4">Booking ID</th>
                     <th className="py-3.5 px-4">Customer</th>
                     <th className="py-3.5 px-4">Activity</th>
@@ -303,96 +370,87 @@ export const AdminPage: React.FC = () => {
                     <th className="py-3.5 px-4 text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60 text-xs">
+                <tbody className="divide-y divide-slate-100 text-xs">
                   {filteredBookings.map((b) => (
-                    <tr key={b.id} className="hover:bg-slate-800/40 transition-colors">
+                    <tr key={b.id} className="hover:bg-slate-50/80 transition-colors">
                       
-                      {/* ID */}
-                      <td className="py-4 px-4 font-mono font-bold text-slate-300">
+                      <td className="py-4 px-4 font-mono font-bold text-slate-500">
                         {b.id}
                       </td>
 
-                      {/* Customer */}
                       <td className="py-4 px-4">
-                        <div className="font-extrabold text-white">{b.name}</div>
-                        <div className="text-slate-400 text-[11px] font-mono mt-0.5">{b.phone}</div>
+                        <div className="font-extrabold text-slate-900">{b.name}</div>
+                        <div className="text-slate-500 text-[11px] font-mono mt-0.5">{b.phone}</div>
                       </td>
 
-                      {/* Activity */}
                       <td className="py-4 px-4 max-w-xs">
-                        <div className="font-bold text-slate-200 truncate">{b.activity}</div>
+                        <div className="font-bold text-mangrove-900 truncate">{b.activity}</div>
                         {b.message && (
-                          <div className="text-[10px] text-slate-400 truncate italic mt-0.5">
+                          <div className="text-[10px] text-slate-500 truncate italic mt-0.5">
                             "{b.message}"
                           </div>
                         )}
                       </td>
 
-                      {/* Date & Slot */}
                       <td className="py-4 px-4">
-                        <div className="font-bold text-white flex items-center gap-1.5">
-                          <Calendar className="w-3.5 h-3.5 text-mangrove-400 shrink-0" />
+                        <div className="font-bold text-slate-800 flex items-center gap-1.5">
+                          <Calendar className="w-3.5 h-3.5 text-mangrove-600 shrink-0" />
                           <span>{b.date || 'Flexible'}</span>
                         </div>
-                        <div className="text-[10px] text-sunset-400 font-semibold mt-0.5 truncate max-w-[180px]">
+                        <div className="text-[10px] text-sunset-600 font-semibold mt-0.5 truncate max-w-[180px]">
                           {b.timeSlot}
                         </div>
                       </td>
 
-                      {/* Guests */}
-                      <td className="py-4 px-4 font-bold text-slate-200">
+                      <td className="py-4 px-4 font-bold text-slate-700">
                         {b.guests} {parseInt(b.guests) === 1 ? 'Guest' : 'Guests'}
                       </td>
 
-                      {/* Status Selector Badge */}
                       <td className="py-4 px-4">
-                        <div className="relative inline-block">
-                          <select
-                            value={b.status}
-                            onChange={(e) => handleStatusChange(b.id, e.target.value as BookingRecord['status'])}
-                            className="bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-1 text-xs font-bold text-white outline-none cursor-pointer hover:border-slate-700 transition-colors"
-                          >
-                            <option value="Confirmed">✅ Confirmed</option>
-                            <option value="Pending">⏳ Pending</option>
-                            <option value="Completed">✨ Completed</option>
-                            <option value="Cancelled">❌ Cancelled</option>
-                          </select>
-                        </div>
+                        <select
+                          value={b.status}
+                          onChange={(e) => handleStatusChange(b.id, e.target.value as BookingRecord['status'])}
+                          className={`text-xs font-extrabold px-2.5 py-1 rounded-xl outline-none border cursor-pointer ${
+                            b.status === 'Confirmed' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' :
+                            b.status === 'Pending' ? 'bg-amber-50 text-amber-800 border-amber-200' :
+                            b.status === 'Completed' ? 'bg-sky-50 text-sky-800 border-sky-200' :
+                            'bg-rose-50 text-rose-800 border-rose-200'
+                          }`}
+                        >
+                          <option value="Confirmed">✅ Confirmed</option>
+                          <option value="Pending">⏳ Pending</option>
+                          <option value="Completed">✨ Completed</option>
+                          <option value="Cancelled">❌ Cancelled</option>
+                        </select>
                       </td>
 
-                      {/* Actions */}
                       <td className="py-4 px-4 text-right">
                         <div className="flex items-center justify-end gap-2">
-                          
-                          {/* WhatsApp Chat Button */}
                           <a
                             href={`https://wa.me/${b.phone.replace(/[^0-9]/g, '')}?text=Hi%20${encodeURIComponent(b.name)},%20regarding%20your%20Nomadoo%20Varkala%20booking%20(${b.id})...`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="p-1.5 rounded-lg bg-[#25D366]/20 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors"
-                            title="Chat on WhatsApp"
+                            title="WhatsApp"
                           >
                             <WhatsappIcon className="w-4 h-4 fill-current" showBackground={false} />
                           </a>
 
-                          {/* Direct Call */}
                           <a
                             href={`tel:${b.phone.replace(/[^0-9]/g, '')}`}
-                            className="p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:bg-mangrove-800 hover:text-white transition-colors"
-                            title="Call Customer"
+                            className="p-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-mangrove-800 hover:text-white transition-colors"
+                            title="Call"
                           >
                             <Phone className="w-4 h-4" />
                           </a>
 
-                          {/* Delete */}
                           <button
                             onClick={() => handleDelete(b.id)}
-                            className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:bg-rose-900/50 hover:text-rose-400 transition-colors"
-                            title="Delete Record"
+                            className="p-1.5 rounded-lg bg-slate-100 text-slate-500 hover:bg-rose-100 hover:text-rose-600 transition-colors"
+                            title="Delete"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
-
                         </div>
                       </td>
 
@@ -402,20 +460,19 @@ export const AdminPage: React.FC = () => {
               </table>
             </div>
           )}
-
         </div>
 
       </main>
 
       {/* Add Manual Booking Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-slate-900 rounded-3xl max-w-md w-full p-6 border border-slate-800 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <h3 className="text-base font-extrabold text-white">Add Manual Booking</h3>
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 border border-slate-200 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <h3 className="text-base font-extrabold text-slate-900">Add Manual Booking</h3>
               <button 
                 onClick={() => setShowAddModal(false)}
-                className="text-slate-400 hover:text-white text-xs font-bold"
+                className="text-slate-400 hover:text-slate-700 text-xs font-bold"
               >
                 ✕
               </button>
@@ -423,35 +480,35 @@ export const AdminPage: React.FC = () => {
 
             <form onSubmit={handleAddManualBooking} className="space-y-3 text-xs">
               <div>
-                <label className="block text-slate-400 font-bold mb-1">Customer Name</label>
+                <label className="block text-slate-700 font-bold mb-1">Customer Name</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. John Doe"
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-mangrove-600"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-900 outline-none focus:border-mangrove-600"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 font-bold mb-1">Phone Number</label>
+                <label className="block text-slate-700 font-bold mb-1">Phone Number</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. +91 9876543210"
                   value={newPhone}
                   onChange={(e) => setNewPhone(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-mangrove-600"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-900 outline-none focus:border-mangrove-600"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 font-bold mb-1">Activity</label>
+                <label className="block text-slate-700 font-bold mb-1">Activity</label>
                 <select
                   value={newActivity}
                   onChange={(e) => setNewActivity(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-mangrove-600"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-900 outline-none focus:border-mangrove-600"
                 >
                   <option value="Mangrove Kayaking (1-Seater Solo)">1-Seater Solo Kayak (₹600)</option>
                   <option value="Mangrove Kayaking (2-Seater Tandem)">2-Seater Tandem Kayak (₹1,200)</option>
@@ -462,29 +519,29 @@ export const AdminPage: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-slate-400 font-bold mb-1">Date</label>
+                  <label className="block text-slate-700 font-bold mb-1">Date</label>
                   <input
                     type="date"
                     value={newDate}
                     onChange={(e) => setNewDate(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white outline-none focus:border-mangrove-600"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-slate-900 outline-none focus:border-mangrove-600"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 font-bold mb-1">Guests</label>
+                  <label className="block text-slate-700 font-bold mb-1">Guests</label>
                   <input
                     type="number"
                     min="1"
                     value={newGuests}
                     onChange={(e) => setNewGuests(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white outline-none focus:border-mangrove-600"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-slate-900 outline-none focus:border-mangrove-600"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-mangrove-800 hover:bg-mangrove-700 text-white font-extrabold py-3 rounded-xl transition-colors mt-2"
+                className="w-full bg-mangrove-800 hover:bg-mangrove-900 text-white font-extrabold py-3 rounded-xl transition-colors mt-2"
               >
                 Save Booking
               </button>
