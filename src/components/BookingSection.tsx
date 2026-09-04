@@ -371,7 +371,7 @@ export const BookingSection: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {/* Custom Luxury Calendar Picker */}
                 <div ref={calendarRef} className="relative">
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center justify-between">
                     <span>Preferred Date</span>
                     {date && (
                       <button
@@ -482,7 +482,7 @@ export const BookingSection: React.FC = () => {
                                 setDate(cellDateStr);
                                 setCalendarOpen(false);
                               }}
-                              className={`h-8 w-8 mx-auto rounded-xl text-xs font-bold transition-all flex items-center justify-between justify-center ${
+                              className={`h-8 w-8 mx-auto rounded-xl text-xs font-bold transition-all flex items-center justify-center ${
                                 isPast
                                   ? 'text-slate-300 cursor-not-allowed line-through opacity-50'
                                   : isSelected

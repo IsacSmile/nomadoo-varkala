@@ -129,14 +129,14 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
                   <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-mangrove-200 hover:border-mangrove-600 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group overflow-hidden">
                     <div className="space-y-3">
                       {/* Photo Banner */}
-                      <div className="relative h-36 sm:h-44 rounded-xl overflow-hidden shadow-inner">
+                      <div className="relative aspect-[4/3] sm:h-52 w-full rounded-xl overflow-hidden shadow-inner bg-slate-950">
                         <img
                           src="/images/single_yellow_kayak.jpg"
                           alt="1-Seater Solo Kayak Varkala"
-                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                          className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
-                        <span className="absolute top-2.5 right-2.5 text-[10px] font-extrabold uppercase bg-sunset-500 text-white px-2 py-0.5 rounded-md shadow-sm">
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
+                        <span className="absolute top-2.5 right-2.5 text-[10px] font-extrabold uppercase bg-sunset-500 text-white px-2 py-0.5 rounded-md shadow-sm z-10">
                           Single Kayak
                         </span>
                       </div>
@@ -183,14 +183,14 @@ export const KayakingHighlightCard: React.FC<KayakingHighlightCardProps> = ({ on
                   <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-mangrove-200 hover:border-mangrove-600 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group overflow-hidden">
                     <div className="space-y-3">
                       {/* Photo Banner */}
-                      <div className="relative h-36 sm:h-44 rounded-xl overflow-hidden shadow-inner">
+                      <div className="relative aspect-[4/3] sm:h-52 w-full rounded-xl overflow-hidden shadow-inner bg-slate-950">
                         <img
                           src="/images/tandem_kayak_blue_sky.jpg"
                           alt="2-Seater Tandem Kayak Varkala"
                           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
-                        <span className="absolute top-2.5 right-2.5 text-[10px] font-extrabold uppercase bg-mangrove-800 text-white px-2 py-0.5 rounded-md shadow-sm">
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
+                        <span className="absolute top-2.5 right-2.5 text-[10px] font-extrabold uppercase bg-mangrove-800 text-white px-2 py-0.5 rounded-md shadow-sm z-10">
                           Double / Tandem
                         </span>
                       </div>
