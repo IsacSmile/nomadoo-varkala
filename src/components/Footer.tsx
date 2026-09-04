@@ -1,6 +1,6 @@
 import React from 'react';
 import { CONTACT_PHONE_1, WHATSAPP_NUMBER, GOOGLE_MAPS_LINK } from '../data/nomadooData';
-import { Phone, MapPin, ArrowUp, ShieldCheck, FileText, Lock } from 'lucide-react';
+import { Phone, MapPin, ArrowUp, ShieldCheck, FileText } from 'lucide-react';
 import { WhatsappIcon } from './WhatsappIcon';
 
 interface FooterProps {
@@ -18,55 +18,43 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerms, onOpenPrivacy }) =>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Minimal Row */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-900">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-900/80">
           
-          {/* Brand */}
-          <a href="#home" className="flex items-center gap-3 group">
-            <div className="bg-white/95 p-1 rounded-lg border border-slate-800 shadow-sm">
-              <img
-                src="/logo.jpg"
-                alt="Nomadoo Varkala"
+          {/* Brand Identity */}
+          <div className="flex items-center gap-3">
+            <div className="bg-sand-100 p-1.5 rounded-xl border border-sand-300 shadow-sm">
+              <img 
+                src="/logo.jpg" 
+                alt="Nomadoo Logo" 
                 className="h-8 w-auto object-contain rounded"
               />
             </div>
-            <div className="flex flex-col">
-              <span className="text-base font-extrabold tracking-tight text-white">
-                NOMADOO <span className="text-sunset-500 font-extrabold">VARKALA</span>
+            <div>
+              <span className="text-lg font-black tracking-tight text-white block">
+                NOMADOO <span className="text-mangrove-400 font-black">VARKALA</span>
               </span>
-              <span className="text-[10px] tracking-wider uppercase font-medium text-slate-400">
-                Mangrove Kayaking & Boating
-              </span>
+              <span className="text-xs text-slate-400 font-medium">Eco Kayaking & Boating Tours</span>
             </div>
-          </a>
+          </div>
 
-          {/* Clean Quick Nav Links */}
-          <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-300">
-            <a href="#home" className="hover:text-mangrove-400 transition-colors">Home</a>
-            <a href="#kayaking-highlight" className="hover:text-mangrove-400 transition-colors">Kayaking</a>
-            <a href="#activities" className="hover:text-mangrove-400 transition-colors">Boating</a>
-            <a href="#gallery" className="hover:text-mangrove-400 transition-colors">Gallery</a>
-            <a href="#booking" className="hover:text-mangrove-400 transition-colors">Book Now</a>
-            <a href="#faqs" className="hover:text-mangrove-400 transition-colors">FAQs</a>
-          </nav>
-
-          {/* Quick Action Badges */}
-          <div className="flex items-center gap-2">
+          {/* Quick Action Contact Chips */}
+          <div className="flex flex-wrap items-center justify-center gap-2">
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Nomadoo%20Varkala!`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-[#25D366]/10 hover:bg-[#25D366] text-[#25D366] hover:text-white text-xs font-bold px-3 py-1.5 rounded-full border border-[#25D366]/30 transition-all"
+              className="inline-flex items-center gap-1.5 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#25D366] text-xs font-bold px-3.5 py-1.5 rounded-full border border-[#25D366]/20 transition-all"
             >
-              <WhatsappIcon className="w-3.5 h-3.5" showBackground={false} color="currentColor" />
+              <WhatsappIcon className="w-3.5 h-3.5 fill-[#25D366]" showBackground={false} />
               <span>WhatsApp</span>
             </a>
 
             <a
-              href={`tel:${CONTACT_PHONE_1.replace(/\s+/g, '')}`}
-              className="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold px-3 py-1.5 rounded-full border border-slate-800 transition-all"
+              href={`tel:${CONTACT_PHONE_1}`}
+              className="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold px-3.5 py-1.5 rounded-full border border-slate-800 transition-all"
             >
               <Phone className="w-3.5 h-3.5 text-mangrove-400" />
-              <span>Call</span>
+              <span>{CONTACT_PHONE_1}</span>
             </a>
 
             <a
@@ -83,10 +71,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerms, onOpenPrivacy }) =>
         </div>
 
         {/* Minimal Bottom Bar with Terms & Privacy Modal Buttons */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 pr-16 sm:pr-20">
           <p>© {new Date().getFullYear()} Nomadoo Varkala. Premium Kayaking & Boating Experiences.</p>
           
-          <div className="flex items-center gap-4 text-xs">
+          <div className="flex flex-wrap items-center gap-3.5 text-xs">
             <button
               onClick={onOpenTerms}
               className="hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
@@ -105,19 +93,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerms, onOpenPrivacy }) =>
               <span>Privacy Policy</span>
             </button>
 
-            <span className="text-slate-800">•</span>
-
-            <a
-              href="/admin"
-              className="hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
-            >
-              <Lock className="w-3.5 h-3.5 text-sunset-400" />
-              <span>Admin</span>
-            </a>
-
             <button
               onClick={scrollToTop}
-              className="w-8 h-8 rounded-full bg-slate-900 hover:bg-mangrove-800 text-slate-300 hover:text-white flex items-center justify-center transition-all border border-slate-800 shadow-sm ml-2"
+              className="w-8 h-8 rounded-full bg-slate-900 hover:bg-mangrove-800 text-slate-300 hover:text-white flex items-center justify-center transition-all border border-slate-800 shadow-sm ml-1"
               aria-label="Back to Top"
             >
               <ArrowUp className="w-3.5 h-3.5" />
