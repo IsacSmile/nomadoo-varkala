@@ -1,5 +1,5 @@
 import React from 'react';
-import { CONTACT_PHONE_1, CONTACT_PHONE_2, WHATSAPP_NUMBER } from '../data/nomadooData';
+import { CONTACT_PHONE_1, CONTACT_PHONE_2, WHATSAPP_NUMBER, GOOGLE_MAPS_LINK } from '../data/nomadooData';
 import { Phone, MapPin, Compass, ArrowUp } from 'lucide-react';
 import { WhatsappIcon } from './WhatsappIcon';
 
@@ -83,9 +83,20 @@ export const Footer: React.FC = () => {
             <div className="space-y-2.5 text-xs text-slate-400">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-mangrove-400 flex-shrink-0 mt-0.5" />
-                <span>
+                <div>
                   <strong className="text-slate-200">Location:</strong> Paravoor Mangrove Estuary & Backwaters, Varkala, Kerala (≈30 mins drive from Varkala Cliff)
-                </span>
+                  <div className="mt-1.5">
+                    <a
+                      href={GOOGLE_MAPS_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 bg-mangrove-900/90 hover:bg-mangrove-800 text-white font-bold text-[11px] px-3 py-1 rounded-full border border-mangrove-700/60 shadow-sm transition-colors"
+                    >
+                      <MapPin className="w-3 h-3 text-sunset-400" />
+                      <span>Open in Google Maps ➔</span>
+                    </a>
+                  </div>
+                </div>
               </div>
 
               <div className="flex items-center gap-2.5">

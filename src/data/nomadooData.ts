@@ -1,6 +1,7 @@
 export const CONTACT_PHONE_1 = "+91 9446110362";
 export const CONTACT_PHONE_2 = "+91 7057829795";
 export const WHATSAPP_NUMBER = "919446110362";
+export const GOOGLE_MAPS_LINK = "https://maps.app.goo.gl/6Zo2NjQxppANYaVVA";
 
 export interface Activity {
   id: string;
