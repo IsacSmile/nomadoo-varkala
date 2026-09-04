@@ -136,45 +136,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookClick }) => {
                 </div>
 
                 {/* Rating & Active Slide Caption (Bottom Overlay) */}
-                <div className="absolute bottom-3.5 left-3.5 right-3.5 bg-white/95 backdrop-blur-md p-3 sm:p-4 rounded-2xl border border-white/60 shadow-xl flex items-center justify-between z-10">
-                  <div>
-                    <div className="flex items-center gap-1 text-sunset-500 mb-0.5">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 fill-sunset-500 text-sunset-500" />
-                      ))}
-                      <span className="text-xs font-black text-slate-900 ml-1">4.9 / 5.0</span>
+                <div className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-md p-3 sm:p-4 rounded-2xl border border-white/80 shadow-xl flex items-center justify-between z-10">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-1 text-sunset-500 mb-0.5 flex-wrap">
+                      <div className="flex gap-0.5">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-3 h-3 fill-sunset-500 text-sunset-500" />
+                        ))}
+                      </div>
+                      <span className="text-[11px] sm:text-xs font-black text-slate-900 ml-1">
+                        4.9 ★ <span className="text-slate-600 font-bold">(876+ Google Reviews)</span>
+                      </span>
                     </div>
-                    <p className="text-[11px] sm:text-xs font-bold text-slate-800 truncate max-w-[200px] sm:max-w-xs">
+                    <p className="text-[11px] sm:text-xs font-bold text-slate-800 truncate">
                       {HERO_PHOTOS[currentSlide].title}
                     </p>
                   </div>
-                  <span className="bg-mangrove-100 text-mangrove-900 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider shrink-0">
-                    Live Photo {currentSlide + 1}/7
-                  </span>
                 </div>
 
-              </div>
-
-              {/* Floating Trust Badge 1 (Top Right) */}
-              <div className="hidden sm:flex absolute -top-4 -right-4 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-xl border border-sand-200 items-center gap-2.5 transform hover:-translate-y-1 transition-transform duration-300 z-20">
-                <div className="w-8 h-8 rounded-xl bg-mangrove-100 flex items-center justify-center text-mangrove-800 flex-shrink-0">
-                  <Compass className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="text-[10px] text-slate-500 font-medium leading-none">Guided Tours</p>
-                  <p className="text-[11px] font-extrabold text-slate-900 mt-0.5">100% Safety Verified</p>
-                </div>
-              </div>
-
-              {/* Floating Trust Badge 2 (Bottom Left) */}
-              <div className="hidden sm:flex absolute -bottom-4 -left-4 bg-mangrove-950/95 backdrop-blur-md text-white px-3.5 py-2.5 rounded-2xl shadow-2xl border border-mangrove-700/60 items-center gap-2.5 transform hover:-translate-y-1 transition-transform duration-300 z-20">
-                <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0 font-bold">
-                  <ShieldCheck className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="text-[10px] text-sand-300 font-medium leading-none">Beginner Friendly</p>
-                  <p className="text-[11px] font-bold text-emerald-300 mt-0.5">No Swimming Needed</p>
-                </div>
               </div>
 
             </div>
@@ -183,10 +162,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookClick }) => {
           {/* Right Side: Minimalist, Professional Typography & CTAs */}
           <div className="lg:col-span-6 order-1 lg:order-2 space-y-4 sm:space-y-5 text-left">
             
-            {/* Eco Tour Operator Badge */}
-            <div className="inline-flex items-center gap-1.5 bg-mangrove-100/90 border border-mangrove-300/80 text-mangrove-950 px-3.5 py-1 rounded-full text-[11px] font-black uppercase tracking-wider shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-mangrove-700" />
-              <span>OFFICIAL VARKALA ECO-TOUR OPERATOR</span>
+            {/* Badges & Trust Header */}
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="inline-flex items-center gap-1.5 bg-mangrove-100/90 border border-mangrove-300/80 text-mangrove-950 px-3.5 py-1 rounded-full text-[11px] font-black uppercase tracking-wider shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-mangrove-700" />
+                <span>OFFICIAL VARKALA ECO-TOUR OPERATOR</span>
+              </div>
+
+              <div className="inline-flex items-center gap-1.5 bg-white border border-sand-300 text-slate-900 px-3 py-1 rounded-full text-[11px] font-extrabold shadow-sm">
+                <div className="flex items-center gap-0.5 text-sunset-500">
+                  <Star className="w-3.5 h-3.5 fill-sunset-500 text-sunset-500" />
+                </div>
+                <span>4.9 ★</span>
+                <span className="text-slate-400 font-normal">•</span>
+                <span className="text-slate-700 font-bold">876+ Google Reviews</span>
+              </div>
             </div>
 
             {/* Main Headline */}
