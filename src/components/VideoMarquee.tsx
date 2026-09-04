@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { GALLERY_VIDEOS } from '../data/nomadooData';
-import { Play, X, Video, Sparkles } from 'lucide-react';
+import { GALLERY_VIDEOS, VideoItem } from '../data/nomadooData';
+import { Play, X, Video, Sparkles, Volume2 } from 'lucide-react';
+import { WhatsappIcon } from './WhatsappIcon';
 
 export const VideoMarquee: React.FC = () => {
-  const [activeVideo, setActiveVideo] = useState<{ id: string; title: string; duration: string; poster: string; description: string } | null>(null);
+  const [activeVideo, setActiveVideo] = useState<VideoItem | null>(null);
 
   // Duplicate list to create continuous infinite scroll
   const marqueeVideos = [...GALLERY_VIDEOS, ...GALLERY_VIDEOS, ...GALLERY_VIDEOS];
@@ -21,13 +22,13 @@ export const VideoMarquee: React.FC = () => {
           </div>
           <div>
             <h3 className="text-base sm:text-lg font-extrabold text-white">Video Reels & Action Shorts</h3>
-            <p className="text-xs text-slate-400">Real action clips from Varkala mangrove backwater tours</p>
+            <p className="text-xs text-slate-400">Click any reel to play live backwater kayaking video footage</p>
           </div>
         </div>
 
         <span className="text-[11px] text-emerald-400 font-extrabold tracking-wider bg-emerald-500/10 px-3.5 py-1 rounded-full border border-emerald-500/30 flex items-center gap-1.5 shrink-0">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          <span>Action Reels</span>
+          <span>Interactive Player</span>
         </span>
       </div>
 
@@ -63,7 +64,7 @@ export const VideoMarquee: React.FC = () => {
               <div className="absolute bottom-0 inset-x-0 p-3.5 flex items-center justify-between gap-2">
                 <span className="font-extrabold text-xs text-white truncate drop-shadow-md">{vid.title}</span>
                 <span className="text-[10px] bg-slate-900/90 text-sunset-400 font-bold px-2 py-0.5 rounded-full border border-slate-700/80 shrink-0">
-                  {vid.duration}
+                  ▶ {vid.duration}
                 </span>
               </div>
 
@@ -72,46 +73,73 @@ export const VideoMarquee: React.FC = () => {
         </div>
       </div>
 
-      {/* Video Modal Player */}
+      {/* HTML5 Live Video Modal Player */}
       {activeVideo && (
-        <div className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
-          <div className="relative max-w-2xl w-full bg-slate-900 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
+        <div className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
+          <div className="relative max-w-3xl w-full bg-slate-900 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
+            
+            {/* Modal Close Button */}
             <button
               onClick={() => setActiveVideo(null)}
-              className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-slate-800/80 hover:bg-slate-700 text-white flex items-center justify-center transition-colors"
+              className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-slate-950/80 hover:bg-slate-800 text-white flex items-center justify-center transition-colors border border-white/20 shadow-lg"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="aspect-video bg-black relative flex items-center justify-center overflow-hidden">
-              <img
-                src={activeVideo.poster}
-                alt={activeVideo.title}
-                className="w-full h-full object-cover opacity-60"
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-slate-950/70 backdrop-blur-sm space-y-3">
-                <div className="w-14 h-14 rounded-full bg-sunset-500 text-slate-950 flex items-center justify-center shadow-2xl">
-                  <Play className="w-7 h-7 fill-slate-950 ml-1" />
+            {/* Video Player */}
+            <div className="aspect-video bg-black relative flex items-center justify-center">
+              <video
+                src={activeVideo.videoUrl}
+                poster={activeVideo.poster}
+                controls
+                autoPlay
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              >
+                Your browser does not support HTML5 video playback.
+              </video>
+            </div>
+
+            {/* Video Details & Action Footer */}
+            <div className="p-4 sm:p-6 bg-slate-900 border-t border-slate-800 space-y-4">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h4 className="text-base sm:text-xl font-extrabold text-white flex items-center gap-2">
+                    <Volume2 className="w-5 h-5 text-sunset-400 shrink-0" />
+                    <span>{activeVideo.title}</span>
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+                    {activeVideo.description}
+                  </p>
                 </div>
-                <h4 className="text-lg font-extrabold text-white">{activeVideo.title}</h4>
-                <p className="text-xs text-slate-300 max-w-md leading-relaxed">{activeVideo.description}</p>
-                <div className="inline-flex items-center gap-1.5 text-[11px] text-sunset-400 font-bold bg-sunset-500/10 px-3 py-1 rounded-full border border-sunset-500/20">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Request full HD video reel on WhatsApp</span>
-                </div>
+                <span className="text-xs font-bold text-sunset-400 bg-sunset-500/10 px-3 py-1 rounded-full border border-sunset-500/20 shrink-0">
+                  {activeVideo.duration}
+                </span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2 border-t border-slate-800">
+                <a
+                  href={`https://wa.me/919446110362?text=Hi%20Nomadoo!%20I%20saw%20the%20video%20"${encodeURIComponent(activeVideo.title)}"%20and%20want%20to%20book.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold text-xs sm:text-sm py-2.5 px-5 rounded-full shadow-md transition-all"
+                >
+                  <WhatsappIcon className="w-4 h-4 fill-white" />
+                  <span>Inquire on WhatsApp</span>
+                </a>
+
+                <a
+                  href="#booking"
+                  onClick={() => setActiveVideo(null)}
+                  className="inline-flex items-center justify-center gap-2 bg-mangrove-800 hover:bg-mangrove-900 text-white font-extrabold text-xs sm:text-sm py-2.5 px-5 rounded-full shadow-md transition-all"
+                >
+                  <Sparkles className="w-4 h-4 text-sunset-400" />
+                  <span>Reserve Kayak Slot</span>
+                </a>
               </div>
             </div>
 
-            <div className="p-4 sm:p-5 bg-slate-900 border-t border-slate-800 flex items-center justify-between">
-              <span className="text-xs font-semibold text-slate-400">Duration: {activeVideo.duration}</span>
-              <a
-                href="#booking"
-                onClick={() => setActiveVideo(null)}
-                className="bg-mangrove-800 hover:bg-mangrove-900 text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-md transition-all"
-              >
-                Book This Experience
-              </a>
-            </div>
           </div>
         </div>
       )}

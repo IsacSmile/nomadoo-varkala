@@ -152,34 +152,47 @@ export const GALLERY_IMAGES = [
   }
 ];
 
-export const GALLERY_VIDEOS = [
+export interface VideoItem {
+  id: string;
+  title: string;
+  duration: string;
+  poster: string;
+  videoUrl: string;
+  description: string;
+}
+
+export const GALLERY_VIDEOS: VideoItem[] = [
   {
     id: "v1",
     title: "Sunrise Mangrove Tunnel Ride",
     duration: "0:45",
     poster: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-    description: "Watch how peaceful the early morning paddling feels through thick mangrove tunnels."
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-a-person-paddling-a-kayak-on-a-calm-lake-43093-large.mp4",
+    description: "Watch how peaceful the early morning paddling feels through thick mangrove tunnels in Varkala."
   },
   {
     id: "v2",
     title: "2-Seater Kayak Tour Highlights",
     duration: "0:58",
     poster: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-person-in-a-kayak-41551-large.mp4",
     description: "A glimpse of couples paddling seamlessly down the calm Paravoor backwater stream."
   },
   {
     id: "v3",
     title: "Sunset Country Boating Varkala",
     duration: "0:35",
-    poster: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-    description: "Relaxing golden hour family trip on traditional wooden boat."
+    poster: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-boating-in-a-lake-at-sunset-42998-large.mp4",
+    description: "Relaxing golden hour family trip on a traditional wooden country boat."
   },
   {
     id: "v4",
     title: "Semi-Speed Boat Thrill Pass",
     duration: "0:42",
-    poster: "https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=600&q=80",
-    description: "Feel the refreshing breeze along the open lake channels."
+    poster: "https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=600&q=80",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-speedboat-cruising-on-a-river-42997-large.mp4",
+    description: "Feel the refreshing breeze along the open lake channels near Varkala."
   }
 ];
 
