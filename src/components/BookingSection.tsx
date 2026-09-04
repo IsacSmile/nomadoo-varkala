@@ -170,7 +170,7 @@ Please confirm availability and share payment token details for best price. Than
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Ananya Sharma"
+                      placeholder="Your Name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full bg-sand-50 border border-sand-300 focus:border-mangrove-600 focus:bg-white rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-900 outline-none transition-all"
