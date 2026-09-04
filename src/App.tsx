@@ -12,6 +12,7 @@ import { Footer } from './components/Footer';
 import { FloatingWhatsapp } from './components/FloatingWhatsapp';
 import { PolicyModal } from './components/PolicyModal';
 import { AdminPage } from './components/AdminPage';
+import { AnimatedSection } from './components/AnimatedSection';
 
 export const App: React.FC = () => {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -51,7 +52,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-sand-50 font-sans text-slate-900 selection:bg-mangrove-200 selection:text-mangrove-900">
+    <div className="min-h-screen bg-sand-50 font-sans text-slate-900 selection:bg-mangrove-200 selection:text-mangrove-900 overflow-x-hidden">
       
       {/* Sticky Header Navbar */}
       <Navbar onBookClick={() => scrollToBooking()} />
@@ -60,25 +61,39 @@ export const App: React.FC = () => {
       <HeroSection onBookClick={() => scrollToBooking('kayak-2seater')} />
 
       {/* Main Kayaking Highlight Card Section */}
-      <KayakingHighlightCard onSelectOption={(optionId) => scrollToBooking(optionId)} />
+      <AnimatedSection>
+        <KayakingHighlightCard onSelectOption={(optionId) => scrollToBooking(optionId)} />
+      </AnimatedSection>
 
       {/* Other Activities Grid */}
-      <OtherActivities onSelectActivity={(activityId) => scrollToBooking(activityId)} />
+      <AnimatedSection>
+        <OtherActivities onSelectActivity={(activityId) => scrollToBooking(activityId)} />
+      </AnimatedSection>
 
       {/* Gallery Image Marquee Scroll */}
-      <ImageMarquee />
+      <AnimatedSection>
+        <ImageMarquee />
+      </AnimatedSection>
 
       {/* Video Marquee Strip */}
-      <VideoMarquee />
+      <AnimatedSection>
+        <VideoMarquee />
+      </AnimatedSection>
 
       {/* Booking Section with WhatsApp pre-filled submission */}
-      <BookingSection selectedActivityId={selectedActivityId} />
+      <AnimatedSection>
+        <BookingSection selectedActivityId={selectedActivityId} />
+      </AnimatedSection>
 
       {/* About & Why Nomadoo Section */}
-      <AboutSection />
+      <AnimatedSection>
+        <AboutSection />
+      </AnimatedSection>
 
       {/* FAQs Section */}
-      <FaqSection />
+      <AnimatedSection>
+        <FaqSection />
+      </AnimatedSection>
 
       {/* Footer */}
       <Footer 
