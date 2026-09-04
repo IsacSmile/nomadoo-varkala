@@ -3,7 +3,7 @@ import { GALLERY_VIDEOS } from '../data/nomadooData';
 import { Play, X, Video } from 'lucide-react';
 
 export const VideoMarquee: React.FC = () => {
-  const [activeVideo, setActiveVideo] = useState<{ id: string; title: string; poster: string; description: string } | null>(null);
+  const [activeVideo, setActiveVideo] = useState<{ id: string; title: string; duration: string; poster: string; description: string } | null>(null);
 
   // Duplicate list to create continuous infinite scroll
   const marqueeVideos = [...GALLERY_VIDEOS, ...GALLERY_VIDEOS, ...GALLERY_VIDEOS];
