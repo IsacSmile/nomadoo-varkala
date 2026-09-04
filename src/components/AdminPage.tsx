@@ -21,29 +21,16 @@ export interface BookingRecord {
 
 const DEFAULT_BOOKINGS: BookingRecord[] = [
   {
-    id: 'NOM-8921',
-    name: 'Rahul Sharma',
-    guestNames: ['Rahul Sharma', 'Neha Sharma'],
-    phone: '+91 98765 43210',
-    activity: 'Mangrove Kayaking (2-Seater Tandem)',
+    id: 'NOM-8924',
+    name: 'Sneha Kapur',
+    guestNames: ['Sneha Kapur', 'Rohan Kapur'],
+    phone: '+91 99887 66554',
+    activity: 'Stand Up Paddleboarding (SUP)',
     date: '2026-09-05',
-    timeSlot: 'Morning Sunrise Batch (Starts 6:00 AM)',
+    timeSlot: 'Midday Daytime Batch (9:00 AM - 3:00 PM)',
     guests: '2',
-    status: 'Confirmed',
-    message: 'Requesting early sunrise photo assistance.',
-    createdAt: '2026-09-04 18:30'
-  },
-  {
-    id: 'NOM-8922',
-    name: 'Ananya Nair',
-    guestNames: ['Ananya Nair'],
-    phone: '+91 94455 12345',
-    activity: 'Mangrove Kayaking (1-Seater Solo)',
-    date: '2026-09-05',
-    timeSlot: 'Evening Sunset Batch (Starts 4:00 PM)',
-    guests: '1',
-    status: 'Pending',
-    createdAt: '2026-09-04 20:15'
+    status: 'Completed',
+    createdAt: new Date(Date.now() - 1000 * 60 * 30).toISOString() // 30 mins ago
   },
   {
     id: 'NOM-8923',
@@ -56,19 +43,32 @@ const DEFAULT_BOOKINGS: BookingRecord[] = [
     guests: '4',
     status: 'Confirmed',
     message: 'Family with 2 children.',
-    createdAt: '2026-09-04 21:00'
+    createdAt: new Date(Date.now() - 1000 * 60 * 120).toISOString() // 2 hours ago
   },
   {
-    id: 'NOM-8924',
-    name: 'Sneha Kapur',
-    guestNames: ['Sneha Kapur', 'Rohan Kapur'],
-    phone: '+91 99887 66554',
-    activity: 'Stand Up Paddleboarding (SUP)',
-    date: '2026-09-04',
-    timeSlot: 'Midday Daytime Batch (9:00 AM - 3:00 PM)',
+    id: 'NOM-8922',
+    name: 'Ananya Nair',
+    guestNames: ['Ananya Nair'],
+    phone: '+91 94455 12345',
+    activity: 'Mangrove Kayaking (1-Seater Solo)',
+    date: '2026-09-05',
+    timeSlot: 'Evening Sunset Batch (Starts 4:00 PM)',
+    guests: '1',
+    status: 'Pending',
+    createdAt: new Date(Date.now() - 1000 * 60 * 300).toISOString() // 5 hours ago
+  },
+  {
+    id: 'NOM-8921',
+    name: 'Rahul Sharma',
+    guestNames: ['Rahul Sharma', 'Neha Sharma'],
+    phone: '+91 98765 43210',
+    activity: 'Mangrove Kayaking (2-Seater Tandem)',
+    date: '2026-09-05',
+    timeSlot: 'Morning Sunrise Batch (Starts 6:00 AM)',
     guests: '2',
-    status: 'Completed',
-    createdAt: '2026-09-04 10:00'
+    status: 'Confirmed',
+    message: 'Requesting early sunrise photo assistance.',
+    createdAt: new Date(Date.now() - 1000 * 60 * 600).toISOString() // 10 hours ago
   }
 ];
 
@@ -233,9 +233,10 @@ export const AdminPage: React.FC = () => {
       guests: parsedGuestNames.length > 0 ? String(parsedGuestNames.length) : newGuests,
       guestNames: parsedGuestNames,
       status: 'Confirmed',
-      createdAt: new Date().toLocaleString()
+      createdAt: new Date().toISOString()
     };
 
+    // Prepend new booking so it appears at the top immediately
     const updated = [newBooking, ...bookings];
     updateBookingsState(updated);
     setShowAddModal(false);
@@ -244,17 +245,36 @@ export const AdminPage: React.FC = () => {
     setNewGuestNamesInput('');
   };
 
-  const filteredBookings = bookings.filter(b => {
-    const matchesSearch = 
-      b.name.toLowerCase().includes(search.toLowerCase()) ||
-      b.phone.includes(search) ||
-      b.activity.toLowerCase().includes(search.toLowerCase()) ||
-      b.id.toLowerCase().includes(search.toLowerCase()) ||
-      (b.guestNames && b.guestNames.some(g => g.toLowerCase().includes(search.toLowerCase())));
-    
-    const matchesStatus = statusFilter === 'All' || b.status === statusFilter;
-    return matchesSearch && matchesStatus;
-  });
+  const formatCreatedTime = (createdStr: string) => {
+    if (!createdStr) return 'Just now';
+    try {
+      const d = new Date(createdStr);
+      if (isNaN(d.getTime())) return createdStr;
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + 
+        ' • ' + d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+    } catch (e) {
+      return createdStr;
+    }
+  };
+
+  // Filter & sort newest bookings first at the top
+  const filteredBookings = bookings
+    .filter(b => {
+      const matchesSearch = 
+        b.name.toLowerCase().includes(search.toLowerCase()) ||
+        b.phone.includes(search) ||
+        b.activity.toLowerCase().includes(search.toLowerCase()) ||
+        b.id.toLowerCase().includes(search.toLowerCase()) ||
+        (b.guestNames && b.guestNames.some(g => g.toLowerCase().includes(search.toLowerCase())));
+      
+      const matchesStatus = statusFilter === 'All' || b.status === statusFilter;
+      return matchesSearch && matchesStatus;
+    })
+    .sort((a, b) => {
+      const timeA = new Date(a.createdAt).getTime() || 0;
+      const timeB = new Date(b.createdAt).getTime() || 0;
+      return timeB - timeA; // Newest first at top!
+    });
 
   return (
     <div className="min-h-screen bg-slate-100/80 text-slate-800 font-sans selection:bg-mangrove-100 selection:text-mangrove-900 pb-16">
@@ -371,8 +391,13 @@ export const AdminPage: React.FC = () => {
                 {/* Header Row: Customer Name & Customized Dropdown */}
                 <div className="flex items-start justify-between gap-2 pb-2 border-b border-slate-100">
                   <div>
-                    <span className="text-[10px] font-mono font-bold text-slate-400 block">{b.id}</span>
-                    <h4 className="text-sm font-black text-slate-900">{b.name}</h4>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-[10px] font-mono font-bold text-slate-400">{b.id}</span>
+                      <span className="text-[10px] font-extrabold text-mangrove-800 bg-mangrove-50 px-2 py-0.5 rounded-md border border-mangrove-200">
+                        {formatCreatedTime(b.createdAt)}
+                      </span>
+                    </div>
+                    <h4 className="text-sm font-black text-slate-900 mt-1">{b.name}</h4>
                   </div>
 
                   {/* Customized Status Dropdown Component */}
@@ -478,7 +503,7 @@ export const AdminPage: React.FC = () => {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-200 text-[11px] font-extrabold uppercase tracking-wider text-slate-500">
-                    <th className="py-3.5 px-4">Booking ID</th>
+                    <th className="py-3.5 px-4">Booking ID & Time</th>
                     <th className="py-3.5 px-4">Customer & Guest List</th>
                     <th className="py-3.5 px-4">Activity</th>
                     <th className="py-3.5 px-4">Date & Slot</th>
@@ -492,7 +517,10 @@ export const AdminPage: React.FC = () => {
                     <tr key={b.id} className="hover:bg-slate-50/80 transition-colors">
                       
                       <td className="py-4 px-4 font-mono font-bold text-slate-500">
-                        {b.id}
+                        <div>{b.id}</div>
+                        <div className="text-[10px] font-semibold text-mangrove-800 bg-mangrove-50/80 px-2 py-0.5 rounded-md border border-mangrove-200 inline-block mt-1 font-sans">
+                          {formatCreatedTime(b.createdAt)}
+                        </div>
                       </td>
 
                       {/* Customer & Guest Names */}
