@@ -85,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
                 />
               </div>
               <div className="flex flex-col min-w-0">
-                <span className={`text-xs sm:text-base font-extrabold tracking-tight leading-tight truncate ${isScrolled ? 'text-mangrove-950' : 'text-white'}`}>
+                <span className={`text-[11px] sm:text-base font-extrabold tracking-tight leading-tight truncate ${isScrolled ? 'text-mangrove-950' : 'text-white'}`}>
                   NOMADOO <span className="text-sunset-500 font-black">VARKALA</span>
                 </span>
                 <span className={`hidden sm:block text-[9px] tracking-wider uppercase font-semibold truncate ${isScrolled ? 'text-mangrove-800' : 'text-sand-300'}`}>
@@ -139,7 +139,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
             <div className="flex lg:hidden items-center gap-2 shrink-0">
               <button
                 onClick={onBookClick}
-                className="sm:hidden bg-mangrove-800 hover:bg-mangrove-900 active:bg-mangrove-950 text-white text-[11px] font-extrabold px-3 py-1.5 rounded-full shadow-md transition-transform active:scale-95 flex items-center gap-1 whitespace-nowrap leading-none"
+                className="sm:hidden bg-mangrove-800 hover:bg-mangrove-900 active:bg-mangrove-950 text-white text-[10px] font-extrabold px-2.5 py-1.5 rounded-full shadow-md transition-transform active:scale-95 flex items-center gap-1 whitespace-nowrap leading-none"
               >
                 <Calendar className="w-3 h-3 text-sunset-400" />
                 <span>Book Now</span>
@@ -161,14 +161,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
 
         {/* Separate Floating Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 mt-2 pointer-events-auto bg-slate-950/95 backdrop-blur-xl border border-slate-800 text-white rounded-3xl p-5 shadow-2xl space-y-4 animate-fadeIn z-50">
+          <div className="lg:hidden absolute top-full left-0 right-0 mt-2 pointer-events-auto bg-slate-950/95 backdrop-blur-xl border border-slate-800 text-white rounded-3xl p-4 shadow-2xl space-y-3 animate-fadeIn z-50">
             <div className="grid grid-cols-2 gap-2">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-xs font-bold py-2.5 px-4 rounded-2xl bg-white/5 hover:bg-white/15 text-slate-200 transition-colors text-center"
+                  className="text-[11px] font-bold py-2 px-3 rounded-2xl bg-white/5 hover:bg-white/15 text-slate-200 transition-colors text-center"
                 >
                   {link.name}
                 </a>
