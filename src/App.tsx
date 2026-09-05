@@ -13,7 +13,6 @@ import { FloatingWhatsapp } from './components/FloatingWhatsapp';
 import { PolicyModal } from './components/PolicyModal';
 import { AdminPage } from './components/AdminPage';
 import { AnimatedSection } from './components/AnimatedSection';
-import { initDevToolsSignature } from './utils/devToolsSignature';
 
 export const App: React.FC = () => {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -28,11 +27,7 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
 
-  // Developer Signature Console Easter Egg & DevTools Detector
-  useEffect(() => {
-    const cleanup = initDevToolsSignature();
-    return () => cleanup();
-  }, []);
+  
 
   // Simple routing for /admin
   if (currentPath === '/admin' || window.location.hash === '#admin') {
