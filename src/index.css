@@ -11,10 +11,17 @@
   body {
     touch-action: manipulation;
     -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   @media (max-width: 640px) {
     html {
       font-size: 90.625%; /* Reduces global website typography scale on mobile (~9.3%) */
+    }
+    /* Ensure mobile typography is stable and free from GPU compositor ghosting */
+    h1, h2, h3, p, span {
+      text-rendering: optimizeLegibility;
+      backface-visibility: hidden;
     }
   }
 }

@@ -19,8 +19,8 @@ export const FloatingWhatsapp: React.FC = () => {
         className="relative w-[52px] h-[52px] rounded-full flex items-center justify-center transition-transform transform group-hover:scale-110 active:scale-95 drop-shadow-2xl"
         aria-label="Chat on WhatsApp"
       >
-        {/* Pulsing Outer Ring */}
-        <span className="absolute inset-0 rounded-full bg-[#4CAF50] opacity-75 animate-ping -z-10" />
+        {/* Pulsing Outer Ring - Desktop only to eliminate mobile GPU compositor continuous repainting */}
+        <span className="hidden sm:block absolute inset-0 rounded-full bg-[#4CAF50] opacity-75 animate-ping -z-10" />
 
         <WhatsappIcon className="w-[52px] h-[52px]" showBackground={true} color="#4CAF50" />
       </a>

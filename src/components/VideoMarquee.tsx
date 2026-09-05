@@ -13,7 +13,7 @@ export const VideoMarquee: React.FC = () => {
     <section className="py-12 bg-slate-950 text-white relative overflow-hidden border-t border-slate-900">
       
       {/* Background Decor */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-mangrove-900/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="hidden sm:block absolute top-0 right-1/4 w-96 h-96 bg-mangrove-900/20 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">

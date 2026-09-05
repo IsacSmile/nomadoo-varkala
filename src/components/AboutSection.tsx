@@ -15,8 +15,8 @@ export const AboutSection: React.FC = () => {
     <section id="about" className="py-16 sm:py-24 bg-gradient-to-b from-white via-sand-50 to-white relative overflow-hidden">
       
       {/* Background Ambient Glow */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-mangrove-100/40 rounded-full blur-3xl -z-10 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-sunset-100/30 rounded-full blur-3xl -z-10 pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/2 left-0 w-96 h-96 bg-mangrove-100/40 rounded-full blur-3xl -z-10 pointer-events-none" />
+      <div className="hidden sm:block absolute bottom-0 right-0 w-96 h-96 bg-sunset-100/30 rounded-full blur-3xl -z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         

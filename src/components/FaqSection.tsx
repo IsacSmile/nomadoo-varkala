@@ -37,8 +37,8 @@ export const FaqSection: React.FC = () => {
     <section id="faqs" className="py-16 sm:py-24 bg-gradient-to-b from-sand-50 via-white to-sand-100/60 relative overflow-hidden">
       
       {/* Glow Orbs */}
-      <div className="absolute top-1/3 left-10 w-80 h-80 bg-mangrove-100/40 rounded-full blur-3xl -z-10 pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-sunset-100/30 rounded-full blur-3xl -z-10 pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/3 left-10 w-80 h-80 bg-mangrove-100/40 rounded-full blur-3xl -z-10 pointer-events-none" />
+      <div className="hidden sm:block absolute bottom-10 right-10 w-96 h-96 bg-sunset-100/30 rounded-full blur-3xl -z-10 pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         

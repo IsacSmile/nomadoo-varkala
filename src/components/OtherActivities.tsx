@@ -12,7 +12,7 @@ export const OtherActivities: React.FC<OtherActivitiesProps> = ({ onSelectActivi
     <section id="activities" className="py-16 sm:py-24 bg-gradient-to-b from-white via-sand-50 to-sand-100/50 relative overflow-hidden">
       
       {/* Background Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-mangrove-100/30 rounded-full blur-3xl -z-10 pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-mangrove-100/30 rounded-full blur-3xl -z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         

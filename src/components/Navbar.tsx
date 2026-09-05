@@ -52,17 +52,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-3 sm:px-6 pt-2.5 sm:pt-3 pointer-events-none">
+    <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 pt-2.5 sm:pt-3 pointer-events-none">
       
       {/* Relative wrapper for absolute positioning of mobile drawer */}
       <div className="max-w-7xl mx-auto relative">
         
         {/* Floating Rounded Header Capsule */}
         <div
-          className={`px-3.5 sm:px-7 transition-all duration-300 rounded-full pointer-events-auto shadow-2xl ${
+          className={`px-3.5 sm:px-7 transition-colors duration-200 rounded-full pointer-events-auto shadow-xl ${
             isScrolled
-              ? 'bg-sand-50/95 backdrop-blur-md border border-sand-200/90 py-2'
-              : 'bg-slate-950/90 backdrop-blur-md text-white py-2 border border-white/15'
+              ? 'bg-sand-50 sm:bg-sand-50/95 sm:backdrop-blur-md border border-sand-200/90 py-2'
+              : 'bg-slate-950 sm:bg-slate-950/90 sm:backdrop-blur-md text-white py-2 border border-white/15'
           }`}
         >
           <div className="flex items-center justify-between gap-2">
@@ -161,7 +161,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookClick }) => {
 
         {/* Separate Floating Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 mt-2 pointer-events-auto bg-slate-950/95 backdrop-blur-xl border border-slate-800 text-white rounded-3xl p-4 shadow-2xl space-y-3 animate-fadeIn z-50">
+          <div className="lg:hidden absolute top-full left-0 right-0 mt-2 pointer-events-auto bg-slate-950 border border-slate-800 text-white rounded-3xl p-4 shadow-2xl space-y-3 z-50">
             <div className="grid grid-cols-2 gap-2">
               {navLinks.map((link) => (
                 <a
